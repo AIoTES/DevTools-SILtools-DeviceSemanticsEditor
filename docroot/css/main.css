@@ -1,0 +1,77 @@
+/* css for d3 graph */
+path.link {
+	fill: none;
+	stroke: #666;
+	stroke-width: 1.5px;
+}
+
+path.link.twofive {
+	opacity: 0.25;
+}
+
+path.link.fivezero {
+	opacity: 0.50;
+}
+
+path.link.sevenfive {
+	opacity: 0.75;
+}
+
+path.link.onezerozero {
+	opacity: 1.0;
+}
+
+circle {
+	fill: #ccc;
+	stroke: #fff;
+	stroke-width: 1.5px;
+}
+
+text {
+	fill: #000;
+	font: 10px sans-serif;
+	pointer-events: none;
+}
+
+svg {
+	border-style: double;
+}
+
+root{
+	height: 100%;
+	min-height: 100%;
+	margin: 0 auto;
+	padding: 50px 48px 0;
+	line-height: 1;
+	color: #000;
+	background: #FFF;
+	-webkit-text-size-adjust: 100%;
+	font-size: 1em;
+}
+
+/* align center the text that is captioned below images */
+.imageCaption{
+	text-align: center;
+}
+
+/* for space between the menu images */
+.mainMenuLinkStyle{
+	margin-right: 70px; 
+	margin-bottom: 70px;
+}
+
+/* keeps all images center aligned */
+.basicImageStyle{
+	display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+/* all in one row align */
+.oneRowClass {
+	display: inline-block; !important
+}
+
+.noBorder { 
+  border: none; 
+} 

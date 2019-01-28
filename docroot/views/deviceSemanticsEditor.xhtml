@@ -1,0 +1,770 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:tp="http://java.sun.com/jsf/composite/custom_components"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<h:head />
+	<h:body>
+		<h:form id="mainForm">
+			<tp:homeToolbar />
+			<p:panel header="Manage device systems" id="deviceManagement">
+				<p:panelGrid layout="grid" style="width:100%"
+					styleClass="ui-panelgrid-blank top-alignment">
+					<f:facet name="header">
+						<p:row>
+							<p:column styleClass="text-alignment-left">Available device systems</p:column>
+							<p:column styleClass="text-alignment-left">Details</p:column>
+						</p:row>
+					</f:facet>
+					<p:row>
+						<p:column style="width:25%">
+							<p:outputPanel
+								style="width: 100%;height: 500px;overflow: auto;display: block">
+								<p:tree value="#{deviceSemanticsEditorView.deviceRoot}"
+									var="doc" selectionMode="single" id="classTree"
+									selection="#{deviceSemanticsEditorView.selectedDeviceNode}">
+									<p:ajax event="select"
+										update=":mainForm:infoGrid :mainForm:buttonRow"
+										listener="#{deviceSemanticsEditorView.onDeviceNodeSelect}" />
+									<p:treeNode>
+										<h:outputText value="#{doc}" />
+									</p:treeNode>
+								</p:tree>
+							</p:outputPanel>
+						</p:column>
+						<p:column style="width:35%">
+							<p:outputPanel
+								style="width: 100%;height: 500px;overflow: auto;display: block">
+								<p:panelGrid columns="1" style="width:100%" layout="grid"
+									id="infoGrid" styleClass="ui-panelgrid-blank">
+									<p:outputPanel>
+										<p:panelGrid columns="2" style="width:100%" layout="grid"
+											styleClass="ui-panelgrid-blank">
+											<h:outputLabel value="Name: " styleClass="bold"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeName}" />
+											<h:outputLabel
+												value="#{deviceSemanticsEditorView.selectedNodeName}"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeName}" />
+
+
+											<h:outputLabel value="Uri: " styleClass="bold"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeUri}" />
+											<h:outputLabel
+												value="#{deviceSemanticsEditorView.selectedNodeUri}"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeUri}" />
+										</p:panelGrid>
+									</p:outputPanel>
+									<p:outputPanel>
+										<p:panelGrid columns="2" style="width:100%" layout="grid"
+											styleClass="ui-panelgrid-blank"
+											rendered="#{not empty deviceSemanticsEditorView.selectedNodeAnnotationItems}">
+											<f:facet name="header">
+									       		 Annotations
+									       		<p:commandLink
+													disabled="#{not deviceSemanticsEditorView.deviceEditable}"
+													styleClass="ui-icon ui-icon-plus"
+													action="#{deviceSemanticsEditorView.openNewAnnotationPropertyDialog}"
+													update=":mainForm:infoGrid :mainForm:addAnnotationPropertyTable"
+													oncomplete="addAnnotationPropertyDialog.show()"
+													style="float:left;margin-right:10px">
+												</p:commandLink>
+											</f:facet>
+											<p:dataTable var="annotationItem"
+												value="#{deviceSemanticsEditorView.selectedNodeAnnotationItems}"
+												emptyMessage="" styleClass="borderless">
+												<p:column width="110">
+													<h:outputText styleClass="bold"
+														value="#{annotationItem.label}" />
+												</p:column>
+												<p:column>
+													<h:outputText value="#{annotationItem.value}" />
+												</p:column>
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.deviceEditable}"
+														update=":mainForm:infoGrid"
+														styleClass="ui-icon ui-icon-closethick"
+														action="#{deviceSemanticsEditorView.removeAnnotationProperty()}"
+														style="float:left;margin-right:10px">
+														<f:setPropertyActionListener value="#{annotationItem}"
+															target="#{deviceSemanticsEditorView.selectedAnnotationProperty}" />
+													</p:commandLink>
+												</p:column>
+
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.deviceEditable}"
+														styleClass="ui-icon ui-icon-search"
+														update=":mainForm:infoGrid :mainForm:editAnnotationPropertyTable"
+														oncomplete="editAnnotationPropertyDialog.show()"
+														action="#{deviceSemanticsEditorView.openAnnotationPropertyDialog()}"
+														style="float:left;margin-right:10px">
+														<f:setPropertyActionListener value="#{annotationItem}"
+															target="#{deviceSemanticsEditorView.selectedAnnotationProperty}" />
+													</p:commandLink>
+												</p:column>
+											</p:dataTable>
+										</p:panelGrid>
+									</p:outputPanel>
+									<p:outputPanel>
+										<p:panelGrid columns="2" style="width:100%" layout="grid"
+											styleClass="ui-panelgrid-blank">
+											<f:facet name="header">
+									        Description
+									    </f:facet>
+											<h:outputLabel value="Subclass of: " styleClass="bold"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeSuperClassNames}" />
+											<p:dataTable var="d"
+												value="#{deviceSemanticsEditorView.selectedNodeSuperClassNames}"
+												emptyMessage="" styleClass="borderless"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeSuperClassNames}">
+												<p:column>
+													<h:outputText value="#{d}" />
+												</p:column>
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.removeParentClassEditable}"
+														styleClass="ui-icon ui-icon-closethick"
+														update=":mainForm:infoGrid :mainForm:classTree"
+														action="#{deviceSemanticsEditorView.removeParentClass(d)}"
+														style="float:left;margin-right:10px">
+													</p:commandLink>
+												</p:column>
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.deviceEditable}"
+														styleClass="ui-icon ui-icon-search"
+														update=":mainForm:editParentClassTable"
+														action="#{deviceSemanticsEditorView.editParentClass(d)}"
+														style="float:left;margin-right:10px">
+													</p:commandLink>
+												</p:column>
+											</p:dataTable>
+
+
+											<p:outputPanel>
+												<p:commandLink
+													disabled="#{not deviceSemanticsEditorView.deviceEditable}"
+													styleClass="ui-icon ui-icon-plus"
+													update=":mainForm:infoGrid :mainForm:addRestrictionTable"
+													action="#{deviceSemanticsEditorView.openAddRestrictionDialog()}"
+													style="float:left;margin-right:10px">
+												</p:commandLink>
+												<h:outputLabel value="Restrictions: " styleClass="bold"
+													rendered="#{not empty deviceSemanticsEditorView.selectedNodeRestrictionNames}" />
+											</p:outputPanel>
+											<p:dataTable var="d"
+												value="#{deviceSemanticsEditorView.selectedNodeRestrictionNames}"
+												emptyMessage="" styleClass="borderless"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeRestrictionNames}">
+												<p:column>
+													<h:outputText value="#{d}" />
+												</p:column>
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.checkRestrictionEditable(d)}"
+														update=":mainForm:infoGrid"
+														styleClass="ui-icon ui-icon-closethick"
+														action="#{deviceSemanticsEditorView.removeRestriction()}"
+														style="float:left;margin-right:10px">
+														<f:setPropertyActionListener value="#{d}"
+															target="#{deviceSemanticsEditorView.selectedRestriction}" />
+													</p:commandLink>
+												</p:column>
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.checkRestrictionEditable(d)}"
+														styleClass="ui-icon ui-icon-search"
+														update=":mainForm:infoGrid :mainForm:editRestrictionTable"
+														action="#{deviceSemanticsEditorView.openEditRestrictionDialog()}"
+														style="float:left;margin-right:10px">
+														<f:setPropertyActionListener value="#{d}"
+															target="#{deviceSemanticsEditorView.selectedRestriction}" />
+													</p:commandLink>
+												</p:column>
+											</p:dataTable>
+
+
+											<p:outputPanel>
+												<p:commandLink
+													disabled="#{not deviceSemanticsEditorView.deviceEditable}"
+													styleClass="ui-icon ui-icon-plus"
+													action="#{deviceSemanticsEditorView.addDatatypeProperty}"
+													update=":mainForm:addDatatypePropertyTable"
+													oncomplete="addDatatypePropertyDialog.show()"
+													style="float:left;margin-right:10px">
+												</p:commandLink>
+												<h:outputLabel value="Datatype properties: "
+													styleClass="bold"
+													rendered="#{not empty deviceSemanticsEditorView.selectedNodeUri}" />
+											</p:outputPanel>
+											<p:dataTable var="d"
+												value="#{deviceSemanticsEditorView.dataTypeProperties}"
+												emptyMessage="-" styleClass="borderless"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeUri}">
+												<p:column>
+													<h:outputText value="#{d.name}" />
+												</p:column>
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.checkDataPropertyEditable(d)}"
+														update=":mainForm:infoGrid"
+														styleClass="ui-icon ui-icon-closethick"
+														action="#{deviceSemanticsEditorView.removeDataProperty()}"
+														style="float:left;margin-right:10px">
+														<f:setPropertyActionListener value="#{d}"
+															target="#{deviceSemanticsEditorView.selectedDatatypeProperty}" />
+													</p:commandLink>
+													<p:column>
+														<p:commandLink
+															disabled="#{not deviceSemanticsEditorView.checkDataPropertyEditable(d)}"
+															update=":mainForm:editDatatypePropertyTable "
+															styleClass="ui-icon ui-icon-search"
+															action="#{deviceSemanticsEditorView.openEditDataPropertyDialog()}"
+															style="float:left;margin-right:10px">
+															<f:setPropertyActionListener value="#{d}"
+																target="#{deviceSemanticsEditorView.selectedDatatypeProperty}" />
+														</p:commandLink>
+													</p:column>
+												</p:column>
+											</p:dataTable>
+
+											<p:outputPanel>
+												<p:commandLink
+													disabled="#{not deviceSemanticsEditorView.deviceEditable}"
+													styleClass="ui-icon ui-icon-plus"
+													action="#{deviceSemanticsEditorView.addObjectProperty}"
+													update=":mainForm:addObjectPropertyTable"
+													oncomplete="addObjectPropertyDialog.show()"
+													style="float:left;margin-right:10px">
+												</p:commandLink>
+												<h:outputLabel value="Object properties: " styleClass="bold"
+													rendered="#{not empty deviceSemanticsEditorView.selectedNodeUri}" />
+											</p:outputPanel>
+											<p:dataTable var="d" styleClass="borderless"
+												value="#{deviceSemanticsEditorView.objectProperties}"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeUri}"
+												emptyMessage="-">
+												<p:column>
+													<h:outputText value="#{d.name}" />
+												</p:column>
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.checkObjectPropertyEditable(d)}"
+														update=":mainForm:infoGrid"
+														styleClass="ui-icon ui-icon-closethick"
+														action="#{deviceSemanticsEditorView.removeObjectProperty()}"
+														style="float:left;margin-right:10px">
+														<f:setPropertyActionListener value="#{d}"
+															target="#{deviceSemanticsEditorView.selectedObjectProperty}" />
+													</p:commandLink>
+												</p:column>
+												<p:column>
+													<p:commandLink
+														disabled="#{not deviceSemanticsEditorView.checkObjectPropertyEditable(d)}"
+														update=":mainForm:editObjectPropertyTable "
+														styleClass="ui-icon ui-icon-search"
+														action="#{deviceSemanticsEditorView.openEditObjectPropertyDialog()}"
+														style="float:left;margin-right:10px">
+														<f:setPropertyActionListener value="#{d}"
+															target="#{deviceSemanticsEditorView.selectedObjectProperty}" />
+													</p:commandLink>
+												</p:column>
+											</p:dataTable>
+										</p:panelGrid>
+									</p:outputPanel>
+
+
+									<p:outputPanel>
+										<p:panelGrid columns="1" style="width:100%" layout="grid"
+											styleClass="ui-panelgrid-blank"
+											rendered="#{not empty deviceSemanticsEditorView.selectedNodeInstances}">
+											<f:facet name="header">
+									        Instances
+									    </f:facet>
+											<p:dataTable var="d"
+												value="#{deviceSemanticsEditorView.selectedNodeInstances}"
+												emptyMessage="" styleClass="borderless"
+												rendered="#{not empty deviceSemanticsEditorView.selectedNodeInstances}">
+												<p:column>
+													<h:outputText value="#{d.name}" />
+												</p:column>
+											</p:dataTable>
+										</p:panelGrid>
+									</p:outputPanel>
+
+								</p:panelGrid>
+							</p:outputPanel>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<p:outputPanel />
+						</p:column>
+						<p:column>
+							<p:outputPanel id="buttonRow">
+								<figure id="downloadOntology" class="oneRowClass">
+									<p:commandLink ajax="false">
+										<h:graphicImage width="35" height="35"
+											url="#{imageController.fetchDownload()}"
+											styleClass="basicImageStyle" />
+										<figcaption class="imageCaption">Download ontology</figcaption>
+										<p:fileDownload value="#{deviceSemanticsEditorView.download()}" />
+									</p:commandLink>
+								</figure>
+								<figure id="addDevice" class="oneRowClass">
+									<p:commandLink
+										rendered="#{not empty deviceSemanticsEditorView.selectedNodeUri}"
+										actionListener="#{deviceSemanticsEditorView.addDevice}"
+										update=":mainForm:addDeviceDialogTable">
+										<h:graphicImage id="addSubClassImg" width="35" height="35"
+											url="#{imageController.fetchNewClass()}"
+											styleClass="basicImageStyle" />
+										<figcaption class="imageCaption">Add device
+											sub-class</figcaption>
+									</p:commandLink>
+								</figure>
+								<figure id="deleteDevice" class="oneRowClass">
+									<p:commandLink
+										rendered="#{deviceSemanticsEditorView.deviceEditable}"
+										actionListener="#{deviceSemanticsEditorView.deleteDevice}"
+										update=":mainForm">
+										<h:graphicImage id="deleteImg" width="35" height="35"
+											url="#{imageController.fetchDelete()}"
+											styleClass="basicImageStyle" />
+										<figcaption class="imageCaption">Delete device
+											system</figcaption>
+									</p:commandLink>
+								</figure>
+							</p:outputPanel>
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</p:panel>
+
+			<!--DIALOG BOX USED FOR NEW SUB CLASS -->
+			<p:dialog widgetVar="addNewDeviceDialog" id="addNewDeviceDialog"
+				width="600" modal="true" header="Add device sub-class"
+				resizable="true" showEffect="clip" hideEffect="fold"
+				position="center,center" dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="addDeviceDialogTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Give a name: " style="font-weight:bold" />
+							<p:inputText style="width: 250px;" autocomplete="off"
+								value="#{deviceSemanticsEditorView.nDeviceName}" />
+
+							<h:outputLabel value="Give a comment: " style="font-weight:bold" />
+							<p:inputText style="width: 250px;" autocomplete="off"
+								value="#{deviceSemanticsEditorView.nDeviceComment}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveDevice}"
+						update=":mainForm" />
+					<p:commandButton value="Close"
+						oncomplete="addNewDeviceDialog.hide();" />
+				</div>
+			</p:dialog>
+
+			<!--DIALOG BOX USED FOR EDITING ANNOTATION PROPERTY -->
+			<p:dialog widgetVar="editAnnotationPropertyDialog"
+				id="editAnnotationPropertyDialog" width="600" modal="true"
+				header="Edit property value" resizable="true" showEffect="clip"
+				hideEffect="fold" position="center,center" dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="editAnnotationPropertyTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel
+								value="#{deviceSemanticsEditorView.editedAnnotationProperty.label}"
+								style="font-weight:bold" />
+							<p:inputTextarea rows="10" style="width: 250px;"
+								autocomplete="off"
+								value="#{deviceSemanticsEditorView.editedAnnotationProperty.value}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveAnnotationProperty}"
+						update=":mainForm:infoGrid" />
+					<p:commandButton value="Close"
+						oncomplete="editAnnotationPropertyDialog.hide();" />
+				</div>
+			</p:dialog>
+
+			<!--DIALOG BOX USED FOR EDITING PARENT CLASS -->
+			<p:dialog widgetVar="editParentClassDialog"
+				id="editParentClassDialog" width="600" modal="true"
+				header="Select parent class" resizable="true" showEffect="clip"
+				hideEffect="fold" position="center,center" dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="editParentClassTable">
+					<p:outputPanel>
+						<p:tree value="#{deviceSemanticsEditorView.deviceParentRoot}"
+							var="doc" selectionMode="single"
+							selection="#{deviceSemanticsEditorView.selectedParentNode}">
+							<p:treeNode>
+								<h:outputText value="#{doc}" />
+							</p:treeNode>
+						</p:tree>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveNewParentClass}"
+						update=":mainForm:infoGrid :mainForm:classTree" />
+					<p:commandButton value="Close"
+						oncomplete="editParentClassDialog.hide();" />
+				</div>
+			</p:dialog>
+
+
+
+			<!--DIALOG BOX USED FOR EDITING RESTRICTION -->
+			<p:dialog widgetVar="editRestrictionDialog"
+				id="editRestrictionDialog" width="600" modal="true"
+				header="Edit restriction" resizable="true" showEffect="clip"
+				hideEffect="fold" position="center,center" dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="editRestrictionTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Type of property:" style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.restrictionPropertyType}"
+								style="width:250px">
+								<p:ajax
+									listener="#{deviceSemanticsEditorView.onRestrictionPropertyTypeChange(false)}"
+									update=":mainForm:editRestrictionTable" />
+								<f:selectItem itemLabel="Datatype property"
+									itemValue="Datatype property" />
+								<f:selectItem itemLabel="Object property"
+									itemValue="Object property" />
+							</p:selectOneMenu>
+
+							<h:outputLabel value="Property:" style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.restrictionPropertyName}"
+								style="width:250px">
+								<p:ajax
+									listener="#{deviceSemanticsEditorView.onRestrictionPropertyChange}"
+									update=":mainForm:editRestrictionTable" />
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.displayedRestrictionPropertiesNames}" />
+							</p:selectOneMenu>
+
+							<h:outputLabel value="Restriction type:" style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.selectedRestrictionType}"
+								style="width:250px">
+								<p:ajax update=":mainForm:editRestrictionTable"
+									listener="#{deviceSemanticsEditorView.onRestrictionTypeChange}" />
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.restrictionTypes}" />
+							</p:selectOneMenu>
+
+							<h:outputLabel value="Restriction value:"
+								style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.selectedRestrictionValue}"
+								style="width:250px" editable="true">
+								<p:ajax update=":mainForm:editRestrictionTable"
+									listener="#{deviceSemanticsEditorView.onRestrictionPropertyValueChange()}" />
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.restrictionValues}" />
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveRestriction}"
+						update=":mainForm:infoGrid" />
+					<p:commandButton value="Close"
+						oncomplete="editRestrictionDialog.hide();" />
+				</div>
+			</p:dialog>
+
+			<!--DIALOG BOX USED FOR ADDING RESTRICTION -->
+			<p:dialog widgetVar="addRestrictionDialog" id="addRestrictionDialog"
+				width="600" modal="true" header="Add restriction" resizable="true"
+				showEffect="clip" hideEffect="fold" position="center,center"
+				dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="addRestrictionTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Type of property:" style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.restrictionPropertyType}"
+								style="width:250px">
+								<p:ajax
+									listener="#{deviceSemanticsEditorView.onRestrictionPropertyTypeChange(false)}"
+									update=":mainForm:addRestrictionTable" />
+								<f:selectItem itemLabel="Datatype property"
+									itemValue="Datatype property" />
+								<f:selectItem itemLabel="Object property"
+									itemValue="Object property" />
+							</p:selectOneMenu>
+
+							<h:outputLabel value="Property:" style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.restrictionPropertyName}"
+								style="width:250px">
+								<p:ajax
+									listener="#{deviceSemanticsEditorView.onRestrictionPropertyChange}"
+									update=":mainForm:addRestrictionTable" />
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.displayedRestrictionPropertiesNames}" />
+							</p:selectOneMenu>
+
+							<h:outputLabel value="Restriction type:" style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.selectedRestrictionType}"
+								style="width:250px">
+								<p:ajax update=":mainForm:addRestrictionTable"
+									listener="#{deviceSemanticsEditorView.onRestrictionTypeChange}" />
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.restrictionTypes}" />
+							</p:selectOneMenu>
+
+							<h:outputLabel value="Restriction value:"
+								style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.selectedRestrictionValue}"
+								style="width:250px" editable="true">
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.restrictionValues}" />
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.addRestriction}"
+						update=":mainForm:infoGrid" />
+					<p:commandButton value="Close"
+						oncomplete="addRestrictionDialog.hide();" />
+				</div>
+			</p:dialog>
+
+
+
+			<!--DIALOG BOX USED FOR ADDING ANNOTATION PROPERTY -->
+			<p:dialog widgetVar="addAnnotationPropertyDialog"
+				id="addAnnotationPropertyDialog" width="600" modal="true"
+				header="Add annotation property" resizable="true" showEffect="clip"
+				hideEffect="fold" position="center,center" dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="addAnnotationPropertyTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Annotation property name: "
+								style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.nAnnotationPropertyLabel}"
+								style="width:250px">
+								<f:selectItem itemLabel="Select" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.allAnnotationPropertyNames}" />
+							</p:selectOneMenu>
+
+							<h:outputLabel value="Value: " style="font-weight:bold" />
+							<p:inputTextarea rows="10" style="width: 250px;"
+								autocomplete="off"
+								value="#{deviceSemanticsEditorView.nAnnotationPropertyValue}" />
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveNewAnnotationProperty}"
+						update=":mainForm:infoGrid" />
+					<p:commandButton value="Close"
+						oncomplete="addAnnotationPropertyDialog.hide();" />
+				</div>
+			</p:dialog>
+
+			<!--DIALOG BOX USED FOR ADDING DATATYPE PROPERTY -->
+			<p:dialog widgetVar="addDatatypePropertyDialog"
+				id="addDatatypePropertyDialog" width="600" modal="true"
+				header="Add datatype property" resizable="true" showEffect="clip"
+				hideEffect="fold" position="center,center" dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="addDatatypePropertyTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Name: " style="font-weight:bold" />
+							<p:inputText style="width: 250px;" autocomplete="off"
+								value="#{deviceSemanticsEditorView.nPropertyName}" />
+
+							<h:outputLabel value="Comment: " style="font-weight:bold" />
+							<p:inputText style="width: 250px;" autocomplete="off"
+								value="#{deviceSemanticsEditorView.nPropertyComment}" />
+
+							<h:outputLabel value="Range: " style="font-weight:bold" />
+							<p:selectOneMenu
+								value="#{deviceSemanticsEditorView.nDatapropertyRange}"
+								style="width:250px">
+								<f:selectItem itemLabel="Select" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.datatypeResources}" />
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveNewDatatypeProperty}"
+						update=":mainForm:infoGrid" />
+					<p:commandButton value="Close"
+						oncomplete="addDatatypePropertyDialog.hide();" />
+				</div>
+			</p:dialog>
+
+
+			<!--DIALOG BOX USED FOR EDITING DATATYPE PROPERTY -->
+			<p:dialog widgetVar="editDataPropertyDialog"
+				id="editDataPropertyDialog" width="600" modal="true"
+				header="Edit datatype property" resizable="true" showEffect="clip"
+				hideEffect="fold" position="center,center" dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="editDatatypePropertyTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Name: " style="font-weight:bold" />
+							<h:outputLabel value="#{deviceSemanticsEditorView.nPropertyName}" />
+
+							<h:outputLabel value="Comment: " style="font-weight:bold" />
+							<p:inputText style="width: 250px;" autocomplete="off"
+								value="#{deviceSemanticsEditorView.editPropertyComment}" />
+
+							<h:outputLabel value="Range: " style="font-weight:bold" />
+							<p:selectOneMenu
+								rendered="#{empty deviceSemanticsEditorView.editDatapropertyRange}"
+								value="#{deviceSemanticsEditorView.editDatapropertyRange}"
+								style="width:250px">
+								<f:selectItem itemLabel="Select" itemValue=""
+									noSelectionOption="true" />
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.datatypeResources}" />
+							</p:selectOneMenu>
+							<p:selectOneMenu
+								rendered="#{not empty deviceSemanticsEditorView.editDatapropertyRange}"
+								value="#{deviceSemanticsEditorView.editDatapropertyRange}"
+								style="width:250px">
+								<f:selectItems
+									value="#{deviceSemanticsEditorView.datatypeResources}" />
+							</p:selectOneMenu>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveDatatypeProperty}"
+						update=":mainForm:infoGrid" />
+					<p:commandButton value="Close"
+						oncomplete="editDataPropertyDialog.hide();" />
+				</div>
+			</p:dialog>
+
+			<!--DIALOG BOX USED FOR EDITING OBJECT PROPERTY -->
+			<p:dialog widgetVar="editObjectPropertyDialog"
+				id="editObjectPropertyDialog" width="600" modal="true"
+				header="Edit object property" resizable="true" showEffect="clip"
+				hideEffect="fold" position="center,center" dynamic="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="editObjectPropertyTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Name: " style="font-weight:bold" />
+							<h:outputLabel value="#{deviceSemanticsEditorView.nPropertyName}" />
+
+							<h:outputLabel value="Comment: " style="font-weight:bold" />
+							<p:inputText style="width: 250px;" autocomplete="off"
+								value="#{deviceSemanticsEditorView.editPropertyComment}" />
+
+							<h:outputLabel value="Range: " style="font-weight:bold" />
+							<p:tree value="#{deviceSemanticsEditorView.allClassesRoot}"
+								var="doc" selectionMode="single"
+								selection="#{deviceSemanticsEditorView.editSelectedRangeNode}">
+								<p:treeNode>
+									<h:outputText value="#{doc}" />
+								</p:treeNode>
+							</p:tree>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveObjectProperty}"
+						update=":mainForm:infoGrid" />
+					<p:commandButton value="Close"
+						oncomplete="editObjectPropertyDialog.hide();" />
+				</div>
+			</p:dialog>
+
+			<!--DIALOG BOX USED FOR ADDING OBJECT PROPERTY -->
+			<p:dialog widgetVar="addObjectPropertyDialog"
+				id="addObjectPropertyDialog" width="600" modal="true"
+				header="Add object property" resizable="true" showEffect="clip"
+				hideEffect="fold" position="center,center" dynamic="true">
+				<p:panelGrid columns="1"
+					style="width: 100%;height: 300px;overflow: auto;display: block"
+					layout="grid" id="addObjectPropertyTable">
+					<p:outputPanel>
+						<p:panelGrid columns="2" style="width:100%" layout="grid"
+							styleClass="ui-panelgrid-blank">
+							<h:outputLabel value="Name: " style="font-weight:bold" />
+							<p:inputText style="width: 250px;" autocomplete="off"
+								value="#{deviceSemanticsEditorView.nPropertyName}" />
+
+							<h:outputLabel value="Comment: " style="font-weight:bold" />
+							<p:inputText style="width: 250px;" autocomplete="off"
+								value="#{deviceSemanticsEditorView.nPropertyComment}" />
+
+							<h:outputLabel value="Range: " style="font-weight:bold" />
+							<p:tree value="#{deviceSemanticsEditorView.allClassesRoot}"
+								var="doc" selectionMode="single"
+								selection="#{deviceSemanticsEditorView.selectedRangeNode}">
+								<p:treeNode>
+									<h:outputText value="#{doc}" />
+								</p:treeNode>
+							</p:tree>
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:panelGrid>
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Save"
+						actionListener="#{deviceSemanticsEditorView.saveNewObjectProperty}"
+						update=":mainForm:infoGrid" />
+					<p:commandButton value="Close"
+						oncomplete="addObjectPropertyDialog.hide();" />
+				</div>
+			</p:dialog>
+
+		</h:form>
+	</h:body>
+	<h:outputStylesheet library="css" name="ontologyExplorer.css" />
+</f:view>

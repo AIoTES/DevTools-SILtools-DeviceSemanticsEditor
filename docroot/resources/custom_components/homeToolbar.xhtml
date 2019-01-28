@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+<composite:interface />
+<composite:implementation>
+	<p:toolbar id="navigation" styleClass="navigation_normal">
+		<p:toolbarGroup align="left">
+			<p:toolbarGroup align="left" style="height: 100%; width: 50%;">
+				<figure class="oneRowClass">
+					<p:commandLink id="homeLink" ajax="false"
+						action="main?faces-redirect=true">
+						<h:graphicImage id="homeImg" width="35" height="35"
+							url="#{imageController.fetchHome()}" styleClass="basicImageStyle" />
+						<figcaption class="imageCaption">Main menu</figcaption>
+					</p:commandLink>
+				</figure>
+			</p:toolbarGroup>
+		</p:toolbarGroup>
+	</p:toolbar>
+</composite:implementation>
+</html>

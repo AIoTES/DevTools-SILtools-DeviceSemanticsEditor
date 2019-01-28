@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+	</h:head>
+	<h:body>
+		<h:form id="my_form">
+			<p:panel id="main_basic" header="Main menu">
+				<h:panelGroup>
+					<div class="imageMenu">
+						<h:panelGroup layout="block" id="ontology-explorer"
+							styleClass="mainMenuBlock">
+							<figure>
+								<p:commandLink id="ontologyExplorerLink" ajax="false"
+									styleClass="mainMenuLinkStyle useToolButton"
+									action="visualization?faces-redirect=true">
+									<h:graphicImage id="ontologyExplorerImg"
+										url="#{imageController.fetchExplorer()}"
+										styleClass="basicImageStyle" />
+									<figcaption class="imageCaption">
+										<strong>Ontology Explorer</strong>
+									</figcaption>
+								</p:commandLink>
+							</figure>
+						</h:panelGroup>
+
+						<h:panelGroup layout="block" id="device-semantics"
+							styleClass="mainMenuBlock">
+							<figure>
+								<p:commandLink id="deviceSemanticsLink" ajax="false"
+									styleClass="mainMenuLinkStyle useToolButton"
+									action="deviceSemanticsEditor?faces-redirect=true">
+									<h:graphicImage id="deviceSemanticsImg"
+										url="#{imageController.fetchDeviceSemantics()}"
+										styleClass="basicImageStyle" />
+									<figcaption class="imageCaption">
+										<strong>Device Semantics Editor</strong>
+									</figcaption>
+								</p:commandLink>
+							</figure>
+						</h:panelGroup>
+
+						<h:panelGroup layout="block" id="service-semantics"
+							styleClass="mainMenuBlock">
+							<figure>
+								<p:commandLink id="serviceSemanticsLink" ajax="false"
+									styleClass="mainMenuLinkStyle useToolButton"
+									action="serviceSemanticsEditor?faces-redirect=true">
+									<h:graphicImage id="serviceSemanticsImg"
+										url="#{imageController.fetchServiceSemantics()}"
+										styleClass="basicImageStyle" />
+									<figcaption class="imageCaption">
+										<strong>Service Semantics Editor</strong>
+									</figcaption>
+								</p:commandLink>
+							</figure>
+						</h:panelGroup>
+					</div>
+				</h:panelGroup>
+
+			</p:panel>
+		</h:form>
+	</h:body>
+	<style type="text/css">
+.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-content.ui-widget-content,.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-header.ui-widget-header,.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-footer.ui-widget-header,.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-header>tr.ui-widget-header,.ui-panelgrid.ui-panelgrid-blank tbody>tr.ui-widget-content,.ui-panelgrid.ui-panelgrid-blank tbody>tr.ui-widget-content>td.ui-panelgrid-cell,.ui-panelgrid.ui-panelgrid-blank .ui-panelgrid-footer>tr.ui-widget-footer
+	{
+	background: none !important;
+	border: 0 none !important;
+}
+
+.ui-grid-row {
+	background: none !important;
+	border: 0 none !important;
+}
+
+.mainMenuBlock {
+	-webkit-column-break-inside: avoid;
+	page-break-inside: avoid;
+	break-inside: avoid;
+	display: block;
+	padding: 1em;
+	border-bottom: 1px;
+}
+
+.ui-widget-content,.ui-widget-header,.imageCaption,.notificationText {
+	color: #000000;
+}
+
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default
+	{
+	color: #000000;
+}
+
+.imageMenu {
+	-webkit-column-count: 3; /* Chrome, Safari, Opera */
+	-moz-column-count: 3; /* Firefox */
+	column-count: 3;
+}
+
+.imageMenu {
+	margin-left: 10em;
+	margin-right: 10em;
+}
+
+nav {
+	display: none;
+}
+
+#sign-in {
+	display: none;
+}
+</style>
+</f:view>

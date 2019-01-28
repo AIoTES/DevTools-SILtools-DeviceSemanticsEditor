@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:tp="http://java.sun.com/jsf/composite/custom_components"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<h:head />
+	<h:body>
+		<h:form id="mainForm">
+			<tp:homeToolbar />
+			<tp:ontologyExplorerTabMenu />
+
+			<p:panelGrid layout="grid" style="width:100%;margin-top: 6px"
+				styleClass="ui-panelgrid-blank top-alignment">
+				<f:facet name="header">
+					<p:row>
+						<p:column styleClass="text-alignment-left">Data properties</p:column>
+						<p:column styleClass="text-alignment-left">Details</p:column>
+					</p:row>
+				</f:facet>
+				<p:row>
+					<p:column style="width:30%">
+						<p:outputPanel
+							style="width: 100%;height: 600px;overflow: auto;display: block">
+							<p:tree value="#{dataPropertiesView.root1}" var="doc"
+								selectionMode="single"
+								selection="#{dataPropertiesView.selectedNode}">
+								<p:ajax event="select" update=":mainForm:infoGrid"
+									listener="#{dataPropertiesView.onNodeSelect}" />
+								<p:treeNode>
+									<h:outputText value="#{doc}" />
+								</p:treeNode>
+							</p:tree>
+						</p:outputPanel>
+					</p:column>
+					<p:column style="width:70%">
+						<p:panelGrid columns="1" style="width:100%" id="infoGrid"
+							layout="grid">
+							<p:outputPanel>
+								<p:panelGrid columns="2" style="width:100%" layout="grid"
+									styleClass="ui-panelgrid-blank">
+									<h:outputLabel value="Name: " styleClass="bold"
+										rendered="#{not empty dataPropertiesView.selectedNodeName}" />
+									<h:outputLabel value="#{dataPropertiesView.selectedNodeName}"
+										rendered="#{not empty dataPropertiesView.selectedNodeName}" />
+
+									<h:outputLabel value="Uri: " styleClass="bold"
+										rendered="#{not empty dataPropertiesView.selectedNodeUri}" />
+									<h:outputLabel value="#{dataPropertiesView.selectedNodeUri}"
+										rendered="#{not empty dataPropertiesView.selectedNodeUri}" />
+								</p:panelGrid>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:panelGrid columns="2" style="width:100%" layout="grid"
+									styleClass="ui-panelgrid-blank"
+									rendered="#{not empty dataPropertiesView.selectedDataPropertyAnnotationItems}">
+									<f:facet name="header">
+									        Annotation
+									    </f:facet>
+									<p:dataTable var="annotationItem"
+										value="#{dataPropertiesView.selectedDataPropertyAnnotationItems}"
+										emptyMessage="" styleClass="borderless">
+										<p:column width="110">
+											<h:outputText styleClass="bold"
+												value="#{annotationItem.label}" />
+										</p:column>
+										<p:column>
+											<h:outputText value="#{annotationItem.value}" />
+										</p:column>
+									</p:dataTable>
+								</p:panelGrid>
+							</p:outputPanel>
+
+							<p:outputPanel>
+								<p:panelGrid columns="2" style="width:100%" layout="grid"
+									styleClass="ui-panelgrid-blank"
+									rendered="#{not empty dataPropertiesView.selectedNodeDomains or not empty dataPropertiesView.selectedNodeRanges}">
+									<f:facet name="header">
+									        Description
+									    </f:facet>
+									<h:outputLabel value="Domain: " styleClass="bold"
+										rendered="#{not empty dataPropertiesView.selectedNodeDomains}" />
+									<p:dataTable var="d"
+										value="#{dataPropertiesView.selectedNodeDomains}"
+										emptyMessage="" styleClass="borderless"
+										rendered="#{not empty dataPropertiesView.selectedNodeDomains}">
+										<p:column>										
+											<p:commandLink
+												actionListener="#{dataPropertiesView.selectClass(d.uri)}"
+												ajax="true" update=":mainForm:classDialogTable">
+												<h:outputText value="#{d.name}" />
+											</p:commandLink>
+										</p:column>
+									</p:dataTable>
+
+									<h:outputLabel value="Range: " styleClass="bold"
+										rendered="#{not empty dataPropertiesView.selectedNodeRanges}" />
+									<p:dataTable var="d" styleClass="borderless noHeader"
+										value="#{dataPropertiesView.selectedNodeRanges}"
+										emptyMessage=""
+										rendered="#{not empty dataPropertiesView.selectedNodeRanges}">
+										<p:column>
+											<h:outputText value="#{d}" />
+										</p:column>
+									</p:dataTable>
+								</p:panelGrid>
+							</p:outputPanel>
+						</p:panelGrid>
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+
+			<!--  DIALOG WINDOW FOR SHOWING CLASS DETAILS -->
+			<p:dialog widgetVar="classDialog" id="classDialog" width="500"
+				header="Details" resizable="false" showEffect="clip"
+				hideEffect="clip" modal="true" appendToBody="true">
+				<p:panelGrid columns="2" style="width:100%" layout="grid"
+					id="classDialogTable">
+					<h:outputLabel value="Name: " styleClass="bold"
+						rendered="#{not empty dataPropertiesView.selectedClass.name}" />
+					<h:outputLabel value="#{dataPropertiesView.selectedClass.name}"
+						rendered="#{not empty dataPropertiesView.selectedClass.name}" />
+
+					<h:outputLabel value="Uri: " styleClass="bold" />
+					<h:outputLabel value="#{dataPropertiesView.selectedClass.uri}" />
+
+					<h:outputLabel value="Comment: " styleClass="bold"
+						rendered="#{not empty dataPropertiesView.selectedClass.comment}" />
+					<h:outputLabel
+						rendered="#{not empty dataPropertiesView.selectedClass.comment}"
+						value="#{dataPropertiesView.selectedClass.comment}" />
+
+					<h:outputLabel value="Subclass of: " styleClass="bold"
+						rendered="#{not empty dataPropertiesView.selectedClass.parentNames}" />
+					<p:dataTable var="d"
+						value="#{dataPropertiesView.selectedClass.parentNames}"
+						emptyMessage="" styleClass="borderless"
+						rendered="#{not empty dataPropertiesView.selectedClass.parentNames}">
+						<p:column>
+							<h:outputText value="#{d}" />
+						</p:column>
+					</p:dataTable>
+				</p:panelGrid>
+
+				<div align="center">
+					<p:commandButton value="Close" style="margin-top: 20px"
+						oncomplete="classDialog.hide()" />
+				</div>
+			</p:dialog>
+		</h:form>
+	</h:body>
+	<h:outputStylesheet library="css" name="ontologyExplorer.css" />
+</f:view>
