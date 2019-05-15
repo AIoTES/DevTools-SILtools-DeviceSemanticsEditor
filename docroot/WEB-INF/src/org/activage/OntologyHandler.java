@@ -1,11 +1,15 @@
 package org.activage;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,6 +44,11 @@ import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntProperty;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.ontology.Restriction;
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.NodeIterator;
 import com.hp.hpl.jena.rdf.model.Property;
@@ -120,7 +129,7 @@ public class OntologyHandler {
 			String filepath = resourcesPath + "/ontologies/" + ONTOLOGY_NAME;
 			file = new File(filepath);
 			model = ModelFactory.createOntologyModel();
-			readOntologyModel();
+			readOntologyModel(model);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -131,15 +140,42 @@ public class OntologyHandler {
 	 * 
 	 * @throws IOException
 	 */
-	public void readOntologyModel() throws Exception {
+	public void readOntologyModel(OntModel model) throws Exception {
 		if (file == null) {
 			throw new Exception("File null");
 		}
-		InputStream in = new FileInputStream(file);
-		if (file.getCanonicalPath().endsWith(".ttl")) {
-			model = (OntModel) model.read(in, null, "TTL");
-		}
+		//InputStream in = new FileInputStream(file);
+		InputStream in = new URL("http://ontologies.activageproject.eu/activage-core.owl").openStream();
+//		if (file.getCanonicalPath().endsWith(".ttl")) {
+//			model = (OntModel) model.read(in, null, "TTL");
+//		}
 		model = (OntModel) model.read(in, null, "");
+//		model.add(readModel("SecurityAndPrivacyOntology.owl"));
+//		model.add(readModel("aha-ontology.owl"));	
+//		model.add(readModel("big-iot-core.owl"));
+//		model.add(readModel("fiesta-iot.owl"));
+//		model.add(readModel("m3-lite.owl"));
+		model.add(readModel("http://ontologies.activageproject.eu/SecurityAndPrivacyOntology.owl"));
+		model.add(readModel("http://ontologies.activageproject.eu/aha-ontology.owl"));	
+		model.add(readModel("http://ontologies.activageproject.eu/big-iot-core.owl"));
+		model.add(readModel("http://smart-ics.ee.surrey.ac.uk/ontology/fiesta-iot.owl"));
+		model.add(readModel("http://smart-ics.ee.surrey.ac.uk/ontology/m3-lite.owl"));
+		//model.add(readModel("openiot.owl"));
+		//model.add(readModel("vital-iot.owl"));
+	}
+	
+	public OntModel readModel(String filename) throws IOException{
+		//FacesContext context = FacesContext.getCurrentInstance();
+		//ServletContext servletContext = ((ServletContext) context.getExternalContext().getContext());
+		//resourcesPath = servletContext.getRealPath("/resources");
+		//String filepath = resourcesPath + "/ontologies/"+filename;
+		//File file = new File(filepath);
+		OntModel model = ModelFactory.createOntologyModel();
+		InputStream in = new URL(filename).openStream();
+
+		//InputStream in = new FileInputStream(file);
+		model = (OntModel) model.read(in, null, "");
+		return model;
 	}
 
 	/**
@@ -395,21 +431,27 @@ public class OntologyHandler {
 						findParentName(ontClass)));
 			} else {
 				if (ontClass.isAnon()) {
-					OntClass child = ontClass.getSubClass();
-					boolean hasRegularParent = false;
 
-					for (ExtendedIterator<OntClass> j = child
-							.listSuperClasses(true); j.hasNext();) {
-						OntClass parent = j.next();
-						if (!parent.isAnon()
-								&& !parent.getLocalName().equals(RESOURCE)) {
-							hasRegularParent = true;
+					OntClass child = ontClass.getSubClass();
+					if (child != null){
+						boolean hasRegularParent = false;
+	
+						ExtendedIterator<OntClass> j = child.listSuperClasses(true);
+						if (j!= null){
+							while (j.hasNext()){
+								OntClass parent = j.next();
+								if (parent != null && !parent.isAnon()
+										&& !parent.getLocalName().equals(RESOURCE)) {
+									hasRegularParent = true;
+								}
+							}
 						}
-					}
-					if (!hasRegularParent) {
-						List<String> parentNames = findParentName(child);
-						hierarchyClasses.add(new OntologyClass(child,
-								parentNames));
+	
+						if (!hasRegularParent && child.getLocalName() != null) {
+							List<String> parentNames = findParentName(child);
+							hierarchyClasses.add(new OntologyClass(child,
+									parentNames));
+						}
 					}
 				}
 			}
@@ -421,6 +463,7 @@ public class OntologyHandler {
 				allClasses.put(ontClass.getURI(), ontClass);
 			}
 		}
+		
 		for (ExtendedIterator<OntClass> i = model.listClasses(); i.hasNext();) {
 			OntClass ontClass = i.next();
 			for (ExtendedIterator<OntClass> j = ontClass.listSuperClasses(true); j
@@ -437,6 +480,7 @@ public class OntologyHandler {
 			}
 
 		}
+
 		List<OntologyClass> classes = new ArrayList<OntologyClass>(
 				hierarchyClasses);
 		Collections.sort(classes);
@@ -1549,5 +1593,21 @@ public class OntologyHandler {
 		}
 		out.close();
 		return newFileName;
+	}
+	
+	public String getOntologyDescription(String uri) throws UnsupportedEncodingException{
+		Model model = getOntologyDescriptionModel(uri);
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		model.write(output, "TTL");
+		String string = new String(output.toByteArray(), "UTF-8");
+		return string;
+	}
+	
+	public Model getOntologyDescriptionModel(String uri) throws UnsupportedEncodingException{
+		final String sparqlQuery = "DESCRIBE <"+uri+">";
+		Query query = QueryFactory.create(sparqlQuery);
+		QueryExecution queryExecution = QueryExecutionFactory.create(query, model);
+		Model model = queryExecution.execDescribe();
+		return model;
 	}
 }

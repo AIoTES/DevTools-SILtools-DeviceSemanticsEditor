@@ -6,6 +6,7 @@ import javax.faces.bean.ViewScoped;
 
 import org.activage.entities.AnnProperty;
 import org.primefaces.event.NodeSelectEvent; 
+import org.primefaces.model.StreamedContent;
 
  
 @ManagedBean(name = "annotationPropertiesView")
@@ -30,4 +31,12 @@ public class AnnotationPropertiesView extends RootView{
 		selectedNodeName = selectedProperty.getName();
 		selectedNodeUri = selectedProperty.getUri();
     }
+	
+	public void openDescription(){
+		super.openDescription(selectedNodeUri);
+	}
+	
+	public StreamedContent download(){
+		return super.download(selectedNodeUri, selectedNodeName);
+	}
 }

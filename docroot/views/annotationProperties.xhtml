@@ -43,8 +43,24 @@
 							layout="grid" styleClass="ui-panelgrid-blank">
 							<h:outputLabel value="Name: " styleClass="bold"
 								rendered="#{not empty annotationPropertiesView.selectedNodeName}" />
-							<h:outputLabel
-								value="#{annotationPropertiesView.selectedNodeName}" />
+							<p:panelGrid columns="3" style=" width:100%" layout="grid"
+								styleClass="ui-panelgrid-blank">
+								<h:outputLabel
+									value="#{annotationPropertiesView.selectedNodeName}" />
+								<p:commandLink styleClass="ui-icon ui-icon-search"
+									action="#{annotationPropertiesView.openDescription}"
+									style="float:left;margin-right:10px"
+									title="View ontology description"
+									update=":mainForm:textualDescriptionTable"
+									rendered="#{not empty annotationPropertiesView.selectedNodeName}">
+								</p:commandLink>
+								<p:commandLink value="Export" ajax="false"
+									title="Download ontology description"
+									styleClass="ui-icon ui-icon-arrowthick-1-s" process="@this"
+									rendered="#{not empty annotationPropertiesView.selectedNodeName}">
+									<p:fileDownload value="#{annotationPropertiesView.download()}" />
+								</p:commandLink>
+							</p:panelGrid>
 
 							<h:outputLabel value="Uri: " styleClass="bold"
 								rendered="#{not empty annotationPropertiesView.selectedNodeUri}" />
@@ -54,6 +70,24 @@
 					</p:column>
 				</p:row>
 			</p:panelGrid>
+			
+			<!--  DIALOG WINDOW FOR SHOWING COMPONENT IN TURTLE FORMAT -->
+			<p:dialog widgetVar="textualDescriptionDialog"
+				id="textualDescriptionDialog" width="500"
+				header="Textual Description" resizable="false" showEffect="clip"
+				hideEffect="clip" modal="true" appendToBody="true">
+				<p:panelGrid columns="1" style="width:100%" layout="grid"
+					id="textualDescriptionTable">
+					<h:outputText value="#{annotationPropertiesView.turtleDescription}"
+						escape="false"
+						style="width: 100%;height: 500px;overflow: auto;display: block" />
+				</p:panelGrid>
+
+				<div align="center" style="margin-top: 20px">
+					<p:commandButton value="Close"
+						oncomplete="textualDescriptionDialog.hide()" />
+				</div>
+			</p:dialog>
 		</h:form>
 	</h:body>
 	<h:outputStylesheet library="css" name="ontologyExplorer.css" />

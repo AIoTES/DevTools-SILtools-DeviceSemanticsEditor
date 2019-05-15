@@ -1,0 +1,666 @@
+@prefix : <http://openiot.eu/ontology/ns/> .
+@prefix spt: <http://spitfire-project.eu/ontology/ns/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix ssn: <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
+@prefix serv: <http://usoa.deri.ie/ontology/service_v.0.1#> .
+@prefix capo: <http://vocab.deri.ie/capo#> .
+@prefix cpo: <http://vocab.deri.ie/cpo#> .
+@prefix co: <http://vocab.deri.ie/co#> .
+@base <http://openiot.eu/ontology/ns/> .
+
+
+<http://spitfire-project.eu/ontology/ns> rdf:type owl:Ontology ;
+                                    
+                                    rdfs:comment " Please report any error to myriam.leggieri_at_deri.org"^^xsd:string ;
+                                    
+                                    <http://purl.org/dc/elements/1.1/creator> <http://myr.altervista.org/foaf.rdf#me> ;
+				    
+                                    rdfs:comment "This ontology describes abstraction of sensors and their integration with cloud computing concepts."^^xsd:string ,
+                                                 "This ontology is developed by DERI ( http://www.deri.ie ) for the OpenIoT project ( http://openiot.eu ) . It is based on the alignment among the W3C Semantic Sensor Networks Incubator Group (SSN-XG) ontology, the SPITFIRE ontology and the LSM vocabulary. "^^xsd:string ;
+                                    
+                                    <http://purl.org/dc/elements/1.1/rights> "Copyright 2010 - 2013 OpenIoT." ;
+                                    
+                                    rdfs:seeAlso "http://openiot.eu" ;
+                                    
+                                    <http://purl.org/dc/elements/1.1/title> "OpenIoT Ontology"@en ;
+                                    
+                                    <http://purl.org/dc/elements/1.1/identifier> "http://spitfire-project.eu/ontology/ns" ;
+                                    
+                                    <http://purl.org/dc/terms/license> <http://www.w3.org/Consortium/Legal/2002/copyright-software-20021231.html> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+rdfs:seeAlso rdf:type owl:AnnotationProperty .
+rdfs:isDefinedBy rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/elements/1.1/identifier> rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/elements/1.1/source> rdf:type owl:AnnotationProperty .
+rdfs:label rdf:type owl:AnnotationProperty .
+rdfs:comment rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+<http://purl.org/dc/elements/1.1/rights> rdf:type owl:AnnotationProperty .
+
+
+
+#    ///////////////////////////////////////////////////////////////////////////////////////
+#    //
+#    // Classes
+#    //
+#    ///////////////////////////////////////////////////////////////////////////////////////
+
+:Temperature 
+    rdfs:subClassOf  ssn:Property;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+
+:AirTemperature 
+    rdfs:subClassOf  :Temperature;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+
+:AtmosphereHumidity
+    rdfs:subClassOf  ssn:Property;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:WindChill
+    rdfs:subClassOf  ssn:Property;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:WindSpeed
+    rdfs:subClassOf  ssn:Property;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:AtmospherePressure
+    rdfs:subClassOf  ssn:Property;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:AtmosphereVisibility
+    rdfs:subClassOf  ssn:Property;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Status
+    rdfs:subClassOf  ssn:Property;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:WebcamSnapShot
+   rdfs:subClassOf  ssn:Property;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Context rdf:type owl:Class ;
+rdfs:comment "Sensor Context" ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:MobilityContext rdfs:subClassOf :Context ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:VirtualSensor rdfs:subClassOf ssn:Sensor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:MobileSensor rdfs:subClassOf ssn:Sensor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:StaticSensor rdfs:subClassOf ssn:Sensor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+ssn:MeasurementCapability a owl:Class ;
+   rdfs:isDefinedBy <http://purl.oclc.org/NET/ssnx/ssn> .
+
+spt:Energy a owl:Class ;
+   rdfs:isDefinedBy <http://spitfire-project.eu/ontology/ns> .
+
+:Bandwidth rdfs:subClassOf ssn:MeasurementProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:DataVolume rdfs:subClassOf ssn:MeasurementProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Trustworthiness rdfs:subClassOf ssn:MeasurementProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:SessionTime rdfs:subClassOf ssn:observationResultTime ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:VirtualSensorLocation rdfs:subClassOf dul:Location ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:VirtualSensorTask rdfs:subClassOf dul:Process  ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:SensorUtility rdfs:subClassOf ssn:OperatingProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+ssn:SystemLifetime a owl:Class;
+   rdfs:isDefinedBy <http://purl.oclc.org/NET/ssnx/ssn> .
+
+ssn:Latency a owl:Class ;
+   rdfs:isDefinedBy <http://purl.oclc.org/NET/ssnx/ssn> .
+
+spt:NetworkQuality a owl:Class ;
+   rdfs:isDefinedBy <http://spitfire-project.eu/ontology/ns> .
+
+:Delay rdfs:subClassOf ssn:MeasurementProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:DelayRange rdfs:subClassOf ssn:MeasurementProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:NetworkBandwidth rdfs:subClassOf spt:NetworkProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:NetworkCapacity rdfs:subClassOf spt:NetworkProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:NetworkThroughput rdfs:subClassOf spt:NetworkProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:LinkCost rdfs:subClassOf spt:LinkProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:EaseOfDeployment rdfs:subClassOf ssn:OperatingProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Reliability rdfs:subClassOf ssn:OperatingProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Survivability rdfs:subClassOf ssn:OperatingProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Scalability rdfs:subClassOf spt:NetworkProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ResourceOptimization rdfs:subClassOf ssn:OperatingProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:CostEfficiency rdfs:subClassOf ssn:OperatingProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Confidentiality rdfs:subClassOf ssn:OperatingProperty ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+#    ////////////////SECURITY EXTENSION///////////////////////////////
+
+:CloudService
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  gr:ProductOrService, serv:Service;
+    rdfs:label       "Cloud Computing service"@en;
+    rdfs:comment     "Cloud Computing service"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ProxyCloudService
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :CloudService ;
+    rdfs:label       "Proxy Cloud Computing service"@en;
+    rdfs:comment     "Cloud Computing service that is allowed to act as a Proxy"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:CloudAccess
+    a                rdfs:Class, owl:Class;
+    rdfs:label       "Cloud Access"@en;
+    rdfs:comment     "Access to a Cloud Computing service"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:AnonymousAccess
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :CloudAccess ;
+    rdfs:label       "Anonymous Access"@en;
+    rdfs:comment     "Anonymous Access to a Cloud Computing service"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:CredentialAccess
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :CloudAccess ;
+    rdfs:label       "Credential Access"@en;
+    rdfs:comment     "Access to a Cloud Computing service requiring registered credentials"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ServiceStatus
+    a                rdfs:Class, owl:Class;
+    rdfs:label       "Cloud Service Status"@en;
+    rdfs:comment     "Status of a Cloud Computing service"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ServiceEnabled
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :ServiceStatus ;
+    rdfs:label       "Service Enabled"@en;
+    rdfs:comment     "Cloud Service Status Enabled"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ServiceDisabled
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :ServiceStatus ;
+    rdfs:label       "Service Disabled"@en;
+    rdfs:comment     "Cloud Service Status Disabled"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:SSOServiceStatus
+    a                rdfs:Class, owl:Class;
+    rdfs:label       "SSO Service Status"@en;
+    rdfs:comment     "SSO Status of a Cloud Computing service"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:SSOServiceEnabled
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :SSOServiceStatus ;
+    rdfs:label       "SSO Service Enabled"@en;
+    rdfs:comment     "SSO Cloud Service Status Enabled"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ServiceDisabled
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :ServiceStatus ;
+    rdfs:label       "SSO Service Disabled"@en;
+    rdfs:comment     "SSO Cloud Service Status Disabled"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+
+:ServiceAttribute
+    a                rdfs:Class, owl:Class;
+    rdfs:label       "Service Attribute"@en;
+    rdfs:comment     "Attribute of a Cloud Computing service"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ServiceAttributeStatus
+    a                rdfs:Class, owl:Class;
+    rdfs:label       "Service Attribute Status"@en;
+    rdfs:comment     "Status of Cloud Computing service's attributes"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:AttributeEnabled
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :ServiceAttributeStatus ;
+    rdfs:label       "Service Enabled"@en;
+    rdfs:comment     "Cloud Service Status Enabled"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:AttributeDisabled
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :ServiceAttributeStatus ;
+    rdfs:label       "Service Disabled"@en;
+    rdfs:comment     "Cloud Service Status Disabled"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:LoginStatus
+    a                rdfs:Class, owl:Class;
+    rdfs:label       "Login Status"@en;
+    rdfs:comment     "Status of a Client Login"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:NewLogin
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :LoginStatus ;
+    rdfs:label       "New Login"@en;
+    rdfs:comment     "New Login"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:OldLogin
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :LoginStatus ;
+    rdfs:label       "Old Login"@en;
+    rdfs:comment     "Old Login"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Ticket rdfs:subClassOf dul:Process  ;
+    rdfs:subClassOf  gr:ProductOrService;
+    rdfs:label       "Service Ticket"@en;
+    rdfs:comment     "Service Ticket"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:TicketScheduler rdfs:subClassOf dul:Process  ;
+    rdfs:subClassOf  gr:ProductOrService;
+    rdfs:label       "Service Ticket Scheduler"@en;
+    rdfs:comment     "Service Ticket Scehduler"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:TicketGrantingStatus
+    a                rdfs:Class, owl:Class;
+    rdfs:label       "Ticket Granting Status"@en;
+    rdfs:comment     "Status of a Ticket grant assigned by a Ticket Scheduler"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:TicketGrantingExpired
+  a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :TicketGrantingStatus ;
+    rdfs:label       "Ticket Granting Expired"@en;
+    rdfs:comment     "Ticket Granting Expired"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:TicketGrantingValid
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  :TicketGrantingStatus ;
+    rdfs:label       "Ticket Granting Valid"@en;
+    rdfs:comment     "Ticket Granting Valid"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:SchedulerAuthentication 
+    a                rdfs:Class, owl:Class;
+    rdfs:label       "Ticket Scheduler Authentication"@en;
+    rdfs:comment     "Ticket Scheduler Authentication"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ExpirationPolicy 
+    a                rdfs:Class, owl:Class;
+    rdfs:subClassOf  gr:ProductOrService;
+    rdfs:label       "Expiration Policy"@en;
+    rdfs:comment     "Expiration Policy for Service Tickets"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:Client 
+    rdfs:subClassOf  capo:Client, foaf:Agent ;
+    rdfs:label       "Cloud Computing Client"@en;
+    rdfs:comment     "Cloud Computing Client"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:User 
+    rdfs:subClassOf :Client, foaf:Person ;
+    rdfs:label       "Cloud Computing User"@en;
+    rdfs:comment     "Cloud Computing User"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ClientPermission 
+    rdfs:subClassOf cpo:ClientPermission;
+    rdfs:label       "Cloud Computing Client Permission"@en;
+    rdfs:comment     "Cloud Computing Client Permission"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ClientRole 
+    rdfs:subClassOf co:ClientCredentials;
+    rdfs:label       "Cloud Computing Client Role"@en;
+    rdfs:comment     "Cloud Computing Client Role"@en;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:timesUsed a owl:DatatypeProperty ;
+rdfs:domain :Ticket, :TicketScheduler ;
+rdfs:range xsd:integer ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:creationTime a owl:DatatypeProperty ;
+rdfs:domain :Ticket, :TicketScheduler ;
+rdfs:range xsd:dateTime ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+
+
+:usernameAttr a owl:DatatypeProperty ;
+rdfs:domain :CloudService ;
+rdfs:range xsd:string ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+
+
+
+
+
+
+
+#    ///////////////////////////////////////////////////////////////////////////////////////
+
+
+#    ///////////////////////////////////////////////////////////////////////////////////////
+#    //
+#    // Object properties
+#    //
+#    ///////////////////////////////////////////////////////////////////////////////////////
+
+:ticketFrom a owl:ObjectProperty ;
+rdfs:domain :Ticket, :TicketScheduler ;
+rdfs:range :LoginStatus ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:attributeStatus a owl:ObjectProperty ;
+rdfs:range :ServiceAttributeStatus ;
+owl:inverseOf :attributeStatusFor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:attributeStatusFor a owl:ObjectProperty ;
+rdfs:domain :ServiceAttributeStatus ;
+owl:inverseOf :attributeStatus ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:attribute a owl:ObjectProperty ;
+rdfs:range :ServiceAttribute ;
+rdfs:domain :CloudService ;
+owl:inverseOf :attributeFor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:attributeFor a owl:ObjectProperty ;
+rdfs:domain :ServiceAttribute ;
+rdfs:range :CloudService ;
+owl:inverseOf :attribute ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ssoStatus a owl:ObjectProperty ;
+rdfs:domain :CloudService ;
+rdfs:range :SSOServiceStatus ;
+owl:inverseOf :ssoStatusFor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:ssoStatusFor a owl:ObjectProperty ;
+rdfs:range :CloudService ;
+rdfs:domain :SSOServiceStatus ;
+owl:inverseOf :ssoStatus ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:status a owl:ObjectProperty ;
+rdfs:domain :CloudService ;
+rdfs:range :ServiceStatus ;
+owl:inverseOf :statusFor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:statusFor a owl:ObjectProperty ;
+rdfs:range :CloudService ;
+rdfs:domain :ServiceStatus ;
+owl:inverseOf :status ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:grants a owl:ObjectProperty ;
+rdfs:domain :TicketScheduler ;
+rdfs:range :Ticket ;
+owl:inverseOf :grantedBy ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:grantedBy a owl:ObjectProperty ;
+rdfs:range :TicketScheduler ;
+rdfs:domain :Ticket ;
+owl:inverseOf :grants ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:access a owl:ObjectProperty ;
+rdfs:domain :CloudService ;
+rdfs:range :CloudAccess ;
+owl:inverseOf :accessFor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:accessFor a owl:ObjectProperty ;
+rdfs:range :CloudService ;
+rdfs:domain :CloudAccess ;
+owl:inverseOf :access ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:forService a owl:ObjectProperty ;
+rdfs:range :CloudService ;
+owl:inverseOf :serviceFor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:serviceFor a owl:ObjectProperty ;
+rdfs:domain :CloudService ;
+owl:inverseOf :forService ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:role a owl:ObjectProperty ;
+rdfs:range :ClientRole ;
+rdfs:domain :Client ;
+owl:inverseOf :roleOf ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:roleOf a owl:ObjectProperty ;
+rdfs:domain :ClientRole ;
+rdfs:range :Client ;
+owl:inverseOf :role ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:permission a owl:ObjectProperty ;
+rdfs:range :ClientPermission ;
+rdfs:domain :ClientRole ;
+owl:inverseOf :permissionFor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:permissionFor a owl:ObjectProperty ;
+rdfs:domain :ClientPermission ;
+rdfs:range :ClientRole ;
+owl:inverseOf :permission ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:isObservedValueOf a owl:ObjectProperty ;
+rdfs:domain ssn:ObservationValue ;
+rdfs:range ssn:Observation ;
+owl:inverseOf ssn:observationResult ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:unit rdf:type owl:ObjectProperty ;
+   rdfs:comment "Unit of Measurement in use on a specific device or sensor or sensing device"^^xsd:string ;
+   rdfs:subPropertyOf spt:uom ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:context a owl:TransitiveProperty ;
+rdfs:range :Context ;
+rdfs:domain ssn:Device, ssn:Observation ;
+owl:inverseOf :contextOf ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:contextOf a owl:TransitiveProperty ;
+rdfs:domain :Context ;
+rdfs:range ssn:Device, ssn:Observation ;
+owl:inverseOf :contex ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:mobility a owl:ObjectProperty ;
+rdfs:subPropertyOf :context ;
+rdfs:range :MobilityContext ;
+rdfs:domain ssn:Sensor ;
+owl:inverseOf :mobilityOf ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:mobilityOf a owl:ObjectProperty ;
+rdfs:subPropertyOf :context ;
+rdfs:domain :MobilityContext ;
+rdfs:range ssn:Sensor ;
+owl:inverseOf :mobility ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:subSensor a owl:ObjectProperty ;
+rdfs:subPropertyOf ssn:attachedSystem ;
+rdfs:domain :VirtualSensor ;
+rdfs:range ssn:Sensor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:forVirtualSensor a owl:ObjectProperty ;
+rdfs:subPropertyOf ssn:attachedSystem ;
+rdfs:range :VirtualSensor ;
+rdfs:domain ssn:Sensor ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:foi a owl:ObjectProperty ;
+rdfs:subPropertyOf ssn:featureOfInterest ;
+rdfs:domain :MobilityContext ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+
+
+#    ///////////////////////////////////////////////////////////////////////////////////////
+#    //
+#    // Data properties
+#    //
+#    ///////////////////////////////////////////////////////////////////////////////////////
+
+
+:subSensorsCount a owl:DatatypeProperty ;
+rdfs:domain :VirtualSensor ;
+rdfs:range xsd:integer ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:value rdf:type owl:DatatypeProperty ;
+   ssn:subPropertyOf spt:value ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:mobilityTime rdf:type owl:DatatypeProperty ;
+   owl:range xsd:datetime ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:mobilityStart rdf:type owl:DatatypeProperty ;
+   owl:range xsd:datetime ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:mobilityEnd rdf:type owl:DatatypeProperty ;
+   owl:range xsd:datetime ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+
+
+:authenticatedBy a owl:DatatypeProperty ;
+rdfs:domain :TicketScheduler ;
+rdfs:range xsd:hexBinary ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:expirationPolicy a owl:DatatypeProperty ;
+rdfs:domain :Ticket, :TicketScheduler ;
+rdfs:range xsd:hexBinary ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:servicesGranted a owl:DatatypeProperty ;
+rdfs:domain :TicketScheduler ;
+rdfs:range xsd:hexBinary ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:serviceBinary a owl:DatatypeProperty ;
+rdfs:domain :Ticket ;
+rdfs:range xsd:hexBinary ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:addressId a owl:DatatypeProperty ;
+rdfs:domain :CloudService ;
+rdfs:range xsd:string ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:lastTimeUsed a owl:DatatypeProperty ;
+rdfs:domain :Ticket, :TicketScheduler ;
+rdfs:range xsd:dateTime ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:prevLastTimeUsed a owl:DatatypeProperty ;
+rdfs:domain :Ticket, :TicketScheduler ;
+rdfs:range xsd:dateTime ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:password a owl:DatatypeProperty ;
+rdfs:domain :Client ;
+rdfs:range xsd:string ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:expression a owl:DatatypeProperty ;
+rdfs:domain :CloudService ;
+rdfs:range xsd:string ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:evaluationOrder a owl:DatatypeProperty ;
+rdfs:domain :CloudService ;
+rdfs:range xsd:integer ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+
+:theme a owl:DatatypeProperty ;
+rdfs:domain :CloudService ;
+rdfs:range xsd:string ;
+   rdfs:isDefinedBy <http://openiot.eu/ontology/ns> .
+

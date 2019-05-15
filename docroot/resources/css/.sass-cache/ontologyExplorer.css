@@ -1,0 +1,47 @@
+.ui-tree {
+  border: none; }
+
+.ui-panelgrid td, .ui-panelgrid tr {
+  border-style: none !important; }
+
+.top-alignment td {
+  vertical-align: top; }
+
+.top-alignment > tbody > tr > td {
+  vertical-align: top; }
+
+.text-alignment-left {
+  text-align: left; }
+
+nav {
+  display: none !important; }
+
+#sign-in {
+  display: none; }
+
+.ui-widget-header {
+  border-style: none !important; }
+
+.ui-datatable.borderless thead th, .ui-datatable.borderless tbody, .ui-datatable.borderless tbody tr, .ui-datatable.borderless tbody td {
+  border-style: none;
+  text-align: left !important; }
+
+ui-datatable-header ui-widget-header {
+  text-align: left !important; }
+
+.borderless {
+  border-style: none !important; }
+
+thead th {
+  border: none !important;
+  background: none !important; }
+
+.bold {
+  font-weight: bold; }
+
+.noHeader thead {
+  display: none !important; }
+
+.ui-datatable th div.ui-dt-c, .ui-datatable .ui-datatable-data td div.ui-dt-c, .ui-datatable .ui-datatable-data-empty td div.ui-dt-c, .ui-datatable tfoot td div.ui-dt-c {
+  padding: 0 !important; }
+

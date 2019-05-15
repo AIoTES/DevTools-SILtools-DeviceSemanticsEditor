@@ -14,6 +14,7 @@ import org.activage.entities.OntologyClass;
 import org.activage.views.helper_entities.AnnotationItem;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.NodeSelectEvent;
+import org.primefaces.model.StreamedContent;
  
 
  
@@ -49,6 +50,14 @@ public class ObjectPropertiesView extends RootView{
 		Collections.sort(annotationProperties);
 		selectedObjectPropertyAnnotationItems = ontologyHandler.getOrderedAnnotationPairs(selectedProperty.getObjectProperty());
     }
+	
+	public void openDescription(){
+		super.openDescription(selectedProperty.getUri());
+	}
+	
+	public StreamedContent download(){
+		return super.download(selectedProperty.getUri(), selectedProperty.getName());
+	}
 	
 	public void selectClass(String classURI){
 		selectedClass = ontologyHandler.getOntologyClassByURI(classURI);

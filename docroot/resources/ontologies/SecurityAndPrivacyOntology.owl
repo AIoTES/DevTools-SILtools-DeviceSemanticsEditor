@@ -1,0 +1,2737 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#"
+     xml:base="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl">
+        <owl:versionIRI rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl/1.0.0"/>
+        <dc:title>SecurityAndPrivacyOntologyOntology</dc:title>
+        <dc:subject>Privacy</dc:subject>
+        <owl:versionInfo>Release 1</owl:versionInfo>
+        <dc:subject>HL7</dc:subject>
+        <dc:contributor>Tony Weida</dc:contributor>
+        <dc:description>This ontology currently represents core HL7 Security and Privacy concepts.</dc:description>
+        <dc:source>HL7 Healthcare Privacy and Security Classification System (HCS)</dc:source>
+        <dc:language>en</dc:language>
+        <dc:creator>HL7 Security and CBCC Work Groups</dc:creator>
+        <dc:date>September 2013</dc:date>
+        <dc:subject>Security</dc:subject>
+        <dc:source>ISO/TS 21298: Health informatics — Functional and structural roles </dc:source>
+        <dc:source>HL7 Composite Security and Privacy Domain Analysis Model, May, 2010.</dc:source>
+        <dc:source>ISO/TS 22600 Health informatics – Privilege management and access control, 2006.</dc:source>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/language -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/language"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2000/01/rdf-schema#comment"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#allowedLoginLocation -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#allowedLoginLocation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#assignsSecurityRole -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#assignsSecurityRole">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignment"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+        <dc:description>Describes role(s) subject to assignment.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#assignsUserIdentity -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#assignsUserIdentity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignment"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+        <dc:description>Describes user(s) subject to assignment.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBy -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyOperation"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InterorganizationalAgreement"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedByAgreement -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedByAgreement">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InterorganizationalAgreement"/>
+        <rdfs:comment>May eliminate this specialization of the authorizedBy property.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedByLawOf -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedByLawOf">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+        <rdfs:comment>May eliminate this specialization of the authorizedBy property.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedByOrganization -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedByOrganization">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <rdfs:comment>May eliminate this specialization of the authorizedBy property.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBySubject -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBySubject">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+        <rdfs:comment>May eliminate this specialization of the authorizedBy property.</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#basedOnPrivacyPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#basedOnPrivacyPolicy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyPolicy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#catalogsConstraint -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#catalogsConstraint">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintCatalog"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint"/>
+        <dc:description>Describes constraint(s) within the scope of a catalog.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#constrainsSecurityPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#constrainsSecurityPolicy">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintPolicy"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#CompositeSecurityPolicy"/>
+        <dc:description>Relates a constraint policy to a policy it constrains.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#CompositeSecurityPolicy"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#createsObligation -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#createsObligation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Obligation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsInformationReference -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsInformationReference">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <dc:description>Describes exercise of control over a type of information reference.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsOperation -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsOperation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation"/>
+        <dc:description>Exercises control over a type of operation.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsPurposeOfUse -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsPurposeOfUse">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PurposeOfUse"/>
+        <dc:description>Describes exercise of control for a purpose.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsSecurityRole -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsSecurityRole">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+        <dc:description>Describes exercise of control over a type of role.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasAuthority -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasAuthority">
+        <owl:inverseOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPolicy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCitizenship -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCitizenship">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasClinicalObservation -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasClinicalObservation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ClinicalObservation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCompartment -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCompartment">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Compartment"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConfidentiality -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConfidentiality">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Confidentiality"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConsenter -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConsenter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Consenter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConstraintCatalog -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConstraintCatalog">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintCatalog"/>
+        <dc:description>Describes constraint catalog(s) posessed.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCurrentLocation -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCurrentLocation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCustodian -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCustodian">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ProviderOrganization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasInformationCustodian -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasInformationCustodian">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIntegrity -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIntegrity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Integrity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasJurisdiction -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasJurisdiction">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#JurisdictionalOrganization"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasObject -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasObject">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasOrganization -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasOrganization">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InterorganizationalAgreement"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPaymentSource -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPaymentSource">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PaymentSource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPolicy">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+        <dc:description>Describes policy or policies possessed.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyConsentDirective -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyConsentDirective">
+        <owl:inverseOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubjectOfConsent"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyPolicy">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPolicy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyPolicy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyRule -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyRule">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyPolicy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+        <dc:description>Describes privacy rule(s) posessed.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasRecipient -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasRecipient">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasRoleSet -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasRoleSet">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RoleSet"/>
+        <dc:description>Describes set(s) of roles posessed.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSecurityPolicy -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSecurityPolicy">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPolicy"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityPolicy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSensitivity -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSensitivity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Sensitivity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasServiceDeliveryLocation -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasServiceDeliveryLocation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ServiceDeliveryLocation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubject -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubject">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Population"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubjectOfConsent -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubjectOfConsent">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubject"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubstituteDecisionMaker -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubstituteDecisionMaker">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConsenter"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasUserAssignmentSet -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasUserAssignmentSet">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignmentSet"/>
+        <dc:description>Describes user assignment(s) posessed.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#includesSecurityRole -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#includesSecurityRole">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RoleSet"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+        <dc:description>Describes role(s) included within a set.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#includesUserAssignment -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#includesUserAssignment">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignmentSet"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignment"/>
+        <dc:description>Describes user assignment(s) included within a set.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isConsenterFor -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isConsenterFor">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Consenter"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Client"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isLegalGuardianOf -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isLegalGuardianOf">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isConsenterFor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isLocationForOrganization -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isLocationForOrganization">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isParentOf -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isParentOf">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isConsenterFor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isSubstituteDecisionMakerFor -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isSubstituteDecisionMakerFor">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isConsenterFor"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnInputObject -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnInputObject">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnObject"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <dc:description>Describes input object(s) operated on.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnInputOutputObject -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnInputOutputObject">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnInputObject"/>
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnOutputObject"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <dc:description>Describes input-output object(s) operated on.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnObject -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnObject">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object"/>
+        <dc:description>Describes object(s) operated on.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnOutputObject -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnOutputObject">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnObject"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <dc:description>Describes output object(s) operated on.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#restrictedToRoute -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#restrictedToRoute">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Route"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#separatesSecurityRole -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#separatesSecurityRole">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SeparationOfDutyConstraint"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+        <dc:description>Describes roles separated by constraints (in the sense of Role Based Access Control), e.g., for separation of duty reasona.</dc:description>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesConstraint -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesConstraint">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintPolicy"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesGrantee -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesGrantee">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#DelegationPolicy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyPolicy"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Grantee"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesObligation -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesObligation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ObligationPolicy"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Obligation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesRefrain -->
+
+    <owl:ObjectProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesRefrain">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RefrainPolicy"/>
+        <rdfs:range rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Refrain"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#allowedLoginTimeOfDay -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#allowedLoginTimeOfDay">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86400</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authenticationLevelOfAssurance -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authenticationLevelOfAssurance">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#levelOfAssurance"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsTimeOfDay -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsTimeOfDay">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:withRestrictions rdf:parseType="Collection">
+                    <rdf:Description>
+                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                    </rdf:Description>
+                    <rdf:Description>
+                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86400</xsd:maxInclusive>
+                    </rdf:Description>
+                </owl:withRestrictions>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasDigitalSignature -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasDigitalSignature">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#base64Binary"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasDomainName -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasDomainName">
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasEffectiveTime -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasEffectiveTime">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPublicationURI -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPublicationURI">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        <rdfs:comment>Intended to capture the web location where the document in question is published for human consumption, as opposed to the URI of this ontology element.</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasTimeOfTreatment -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasTimeOfTreatment">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasWrittenSignatureRecorded -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasWrittenSignatureRecorded">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Consenter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#identityProofingLevelOfAssurance -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#identityProofingLevelOfAssurance">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#levelOfAssurance"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#levelOfAssurance -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#levelOfAssurance">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#thirdPartyLevelOfAssurance -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#thirdPartyLevelOfAssurance">
+        <rdfs:subPropertyOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#levelOfAssurance"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#usingWorkstationId -->
+
+    <owl:DatatypeProperty rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#usingWorkstationId">
+        <rdfs:domain rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Authority -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Authority">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#JurisdictionalOrganization"/>
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ProviderOrganization"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>An authority is an organization (either Jurisdictional or Provider) that is responsible for a Privacy Policy.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>According to the CSP-DAM: &apos;This abstract class is used to designate the authority that issues the policy.&apos;</rdfs:comment>
+        <rdfs:label>Authority</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#AuthorizationPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#AuthorizationPolicy">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+        <dc:description>An authorization policy defines allowed actions.</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:label>Authorization Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityPolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsInformationReference"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsOperation"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsPurposeOfUse"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PurposeOfUse"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsSecurityRole"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#restrictedToRoute"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Route"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authenticationLevelOfAssurance"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsTimeOfDay"/>
+                <owl:allValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                            </rdf:Description>
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86400</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#identityProofingLevelOfAssurance"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#thirdPartyLevelOfAssurance"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsTimeOfDay"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                            </rdf:Description>
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86400</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:onDataRange>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authenticationLevelOfAssurance"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#identityProofingLevelOfAssurance"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#thirdPartyLevelOfAssurance"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#CompositeSecurityPolicy"/>
+        <dc:description>A basic security policy serves as a common basis for more specific types of security policies, for example authorization, delegation, obligation and refrain policies.</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:label>Basic Security Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Clearinghouse -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Clearinghouse">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <owl:disjointWith rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ProviderOrganization"/>
+        <dc:description>A clearinghouse is an organization that collects, classifies and/or distributes (healthcare) information.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>Description derived from Merriam Webster.</rdfs:comment>
+        <rdfs:comment>Mentioned in text of CSP-DAM though not specified there as a class.</rdfs:comment>
+        <rdfs:label>Clearinghouse</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Client -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Client">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyConsentDirective"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>A client is a person who is the subject of a consent directive. [HL7 CSP-DAM]</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>The definition of Client is debatable.  On the other hand, a client with no consent directive arguably has no impact on access control.&quot;</rdfs:comment>
+        <rdfs:label>Client</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ClinicalObservation -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ClinicalObservation">
+        <dc:description>As a part of the service they provide to patients, medical doctors, nurses and allied health workers compile notes that document the conditions they encounter, the treatments provided and the outcomes of those treatments. [U.S. National Library of Medicine; http://www.nlm.nih.gov/nichsr/usestats/clinical_observation.html; Retrieved on July 29, 2013]</dc:description>
+        <dc:source>HL7 HCS</dc:source>
+        <rdfs:comment>ClinicalObservation is a generalization of the ClinicalCondition class from the HL7 CSP-DAM.</rdfs:comment>
+        <rdfs:comment>Subclasses of ClinicalObservation are specified in ClinicalObservationOntology.owl.</rdfs:comment>
+        <rdfs:label>Clinical Observation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Compartment -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Compartment">
+        <dc:description>A compartment is a security label tag that &quot;segments&quot; an IT resource by indicating that access and use is restricted to members of a defined community or project.</dc:description>
+        <dc:source>HL7 Healthcare Privacy and Security Classification System (HCS)</dc:source>
+        <rdfs:label>Compartment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#CompositeSecurityPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#CompositeSecurityPolicy">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityPolicy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#AuthorizationPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#DelegationPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ObligationPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#containsSecurityPolicy"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RefrainPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A composite security policy combines other policies (authorization, constraint, delegation, obligation, and/or refrain policies).</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:label>Composite Security Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Confidentiality -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Confidentiality">
+        <dc:description>Confidentiality is the property that information is not made available or disclosed to unauthorized individuals. [per ISO 7498-2:1989]</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM, which cites ISO 7498-2:1989.</dc:source>
+        <rdfs:comment>Subclasses of Confidentiality are specified in ConfidentialityOntology.owl.</rdfs:comment>
+        <rdfs:label>Confidentiality</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Consenter -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Consenter">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isConsenterFor"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Client"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConsenter"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasWrittenSignatureRecorded"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A Consenter is a person who is an individual client of healthcare services or a client delegate (Substitute Decision Maker) that uses a computer system to manage client privacy consent directives.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Consenter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint">
+        <dc:description>A constraint is a restriction (condition or obligation) that is enforced upon access permissions.</dc:description>
+        <dc:source>ANSI/INCITS 359-2004</dc:source>
+        <rdfs:comment>In the future, subclasses of Constraint may be moved to a separate sub-ontology.</rdfs:comment>
+        <rdfs:label>Constraint</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintCatalog -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintCatalog">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#catalogsConstraint"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A constraint catalog is a collection of constraints on permissions (as specified by an organization).</dc:description>
+        <dc:source>HL7 RBAC Constraint Catalog</dc:source>
+        <rdfs:label>Constraint Catalog</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintPolicy">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#constrainsSecurityPolicy"/>
+                        <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#CompositeSecurityPolicy"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesConstraint"/>
+                        <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesConstraint"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#constrainsSecurityPolicy"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#CompositeSecurityPolicy"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>A constraint policy places constraints on another policy.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Constraint Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#DataOperation -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#DataOperation">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation"/>
+        <owl:disjointWith rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyOperation"/>
+        <dc:description>The DataOperation class categorizes operations from the perspective of their effect on object(s).</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>Subclasses of DataOperation are specified in CRUDEA_OperationOntology.owl and in turn in DataOperationOntology.owl.</rdfs:comment>
+        <rdfs:label>Data Operation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#DelegationPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#DelegationPolicy">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesGrantee"/>
+                        <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Grantee"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesGrantee"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Grantee"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>A delegation policy defines what authorizations can be delegated to whom.</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:label>Delegation Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#FunctionalRole -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#FunctionalRole">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+        <owl:disjointWith rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#StructuralRole"/>
+        <dc:description>A functional role reflects functional aspects of relationships between entities. Functional roles are bound to the realization/performance of acts.</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:comment>[taken from HL7 RBAC Role Engineering Process:] Functional Roles consist of all the permissions (operations on health information system objects) needed to perform a task.  Functional role names are associated with groups of permissions for convenience in assigning to users.</rdfs:comment>
+        <rdfs:label>Functional Role</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Grantee -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Grantee">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Clearinghouse"/>
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ProviderOrganization"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesGrantee"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>A grantee is a person or organization given privilege(s), e.g., by a delegation policy.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Grantee</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#HealthRecord -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#HealthRecord">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object"/>
+        <dc:description>A health record stores healthcare information about a person.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Health Record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasClinicalObservation"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ClinicalObservation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCompartment"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Compartment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConfidentiality"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Confidentiality"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCustodian"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ProviderOrganization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIntegrity"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Integrity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasObject"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPaymentSource"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PaymentSource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasRecipient"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSensitivity"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Sensitivity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubject"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SubjectOfRecord"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasTimeOfTreatment"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>An information reference is a specification of the attributes of protected information referenced by a policy.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Information Reference</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Integrity -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Integrity">
+        <dc:description>Integrity is the attribute that information is not altered in any way, deliberately or accidentally.</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:comment>Made a meaningless change in the wording of the ISO definition, from &apos;property&apos; to &apos;attribute&apos; to avoid confusion with OWL properties.</rdfs:comment>
+        <rdfs:comment>Subclasses of Integrity are specified in IntegrityOntology.owl.</rdfs:comment>
+        <rdfs:label>Integrity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InterorganizationalAgreement -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InterorganizationalAgreement">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasOrganization"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasOrganization"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>An interorganizational agreement specifies (security and privacy) arrangements among organizations.</dc:description>
+        <dc:source>&apos;Refrain Policy Vocabulary&apos; presentation to HL7 Security WG by Kathleen Connor in November 2011.</dc:source>
+        <rdfs:label>Interorganizational Agreement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction">
+        <dc:description>A jurisdiction is an area with a set of laws under the control of a system of courts which are different to neighboring areas.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>In the future, instances of Jurisdiction may be defined in a separate sub-ontology.  For now, sample instances  are included within SomewhereHospitalOntology.owl.</rdfs:comment>
+        <rdfs:label>Jurisdiction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#JurisdictionalOrganization -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#JurisdictionalOrganization">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasJurisdiction"/>
+                        <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasJurisdiction"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>A jurisdictional organization is an organization that has territorial authority.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Jurisdictional Organization</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isLocationForOrganization"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#isLocationForOrganization"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A location is a site (such as a physical place or a system, workstation or terminal in a network).</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>It is expected that specific organizations will create and maintain their own subclasses and instances of Location.</rdfs:comment>
+        <rdfs:comment>Should an Organization have a LocationSet to capture the locations which it may use in policies to control access?</rdfs:comment>
+        <rdfs:label>Location</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>An object is an entity that contains or receives information.  An object can represent information containers (e.g., files or directories in an operating system, and/or columns, rows, tables, and views within a database management system) or objects can represent exhaustible system resources, such as printers, disk space, and CPU cycles.</dc:description>
+        <dc:source>HL7 RBAC (based on ANSI/INCITS 359-2004)</dc:source>
+        <rdfs:comment>Subclasses of Object are specified in ObjectOntology.owl.</rdfs:comment>
+        <rdfs:label>Object</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Obligation -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Obligation">
+        <dc:description>An obligation represents a resposibility to follow a course of action.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>Subclasses of Obligation are specified in ObligationOntology.owl.</rdfs:comment>
+        <rdfs:label>Obligation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ObligationPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ObligationPolicy">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesObligation"/>
+                        <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Obligation"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesObligation"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Obligation"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>An obligation policy is event-triggered and defines actions to be performed by manager agents.</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:comment>ISO 22600-2 describes obligation policy in terms of manager agents but says nothing about the latter.</rdfs:comment>
+        <rdfs:label>Obligation Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnObject"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#operatesOnObject"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>To operate is to act on an object or objects.  An operation is an executable image of a program, which upon invocation executes some function for the user.  Within a file system, operations might include read, write, and execute.  Within a database management system, operations might include append, delete, and update.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>For the Security and Privacy Ontology in general, we have adopted &apos;CamelCase&apos; naming which differd slightly from the HL7 RBAC Permission Catalog and from the HL7 vocabulary repository (which also differ from each other).</rdfs:comment>
+        <rdfs:label>Operation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConstraintCatalog"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintCatalog"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPolicy"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyPolicy"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasRoleSet"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RoleSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSecurityPolicy"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasUserAssignmentSet"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignmentSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConstraintCatalog"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintCatalog"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasRoleSet"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RoleSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasUserAssignmentSet"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignmentSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasDigitalSignature"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#base64Binary"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasDomainName"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>An organization is an administrative and/or functional entity.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>In the Composite Security and Privacy DAM, a generalization of JurisdictionalOrganization and ProviderOrganization is named &apos;Authority&apos;.  However, ISO 22600-2 defines Authority as &apos;entity that is responsible for the issuance of certificates&apos;.</rdfs:comment>
+        <rdfs:comment>It is expected that specific organizations will create and maintain their own sub-ontology which imports SecurityAndPrivacyOntology.owl along with some or all of the accompanying subontologies and adds suitable local instances of classes.</rdfs:comment>
+        <rdfs:comment>Organization has exactly one role set per conversation with M. Davis et al., 08/24/2010.</rdfs:comment>
+        <rdfs:comment>Textual description derived from Merriam Webster.</rdfs:comment>
+        <rdfs:label>Organization</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PaymentSource -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PaymentSource">
+        <dc:description>A payment source is the provider of payment for the healthcare services documented by electronic health records.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>Subclasses of PaymentSource are specified in PaymentSourceOntology.owl.</rdfs:comment>
+        <rdfs:comment>The CSP-DAM names the class PolicyProgramPaymentSource but its decription is strictly in terms of payment.</rdfs:comment>
+        <rdfs:label>Payment Source</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCitizenship"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyConsentDirective"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasDigitalSignature"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#base64Binary"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A person is a human being.</dc:description>
+        <dc:source>De novo</dc:source>
+        <rdfs:comment>Obvious generalization of Client, Consenter and similar classes.</rdfs:comment>
+        <rdfs:label>Person</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasAuthority"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Authority"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasAuthority"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Authority"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasEffectiveTime"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPublicationURI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasEffectiveTime"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPublicationURI"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A policy is a set of legal, political, organizational, functional and technical obligations or omissions for communication and cooperation.  [ISO 22600-3]</dc:description>
+        <dc:source>ISO 22600-3</dc:source>
+        <rdfs:label>Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Population -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Population">
+        <dc:description>A population is a subject of privacy policy or consent which is a body of persons or individuals having a quality or characteristic in common.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Population</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#basedOnPrivacyPolicy"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyPolicy"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasConsenter"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyRule"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubjectOfConsent"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Client"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyRule"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubjectOfConsent"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Client"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasEffectiveTime"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPublicationURI"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasEffectiveTime"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPublicationURI"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A privacy consent directive is special policy which defines an agreement between an entity playing the role of the subject of an act and an entity acting. [ISO 22600-3]</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>According to the CSP-DAM: &apos;A Privacy Consent Directive is defined as &apos;an instruction regarding consent and contextual conditions to collect, use, and/or disclose Personal Health Information.&apos; This definition is adapted from the British Columbia, E-Health (Personal Health Information Access and Protection of Privacy) Act, S.B.C. 2008, c. 38, s. 1.&apos;</rdfs:comment>
+        <rdfs:label>Privacy Consent Directive</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyOperation -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyOperation">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authorizedBy"/>
+                <owl:allValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InterorganizationalAgreement"/>
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>The PrivacyOperation class categorizes operations from the perspective of their effect on the privacy of (health) information.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>Subclasses of PrivacyOperation are specified in PrivacyOperationOntology.owl.</rdfs:comment>
+        <rdfs:label>Privacy Operation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyPolicy">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyRule"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesGrantee"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Grantee"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasPrivacyRule"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityPolicy"/>
+        <dc:description>A privacy policy is a policy that is concerned with information privacy practices.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Privacy Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#createsObligation"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Obligation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsInformationReference"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsOperation"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsPurposeOfUse"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PurposeOfUse"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsSecurityRole"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsOperation"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#governsSecurityRole"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasEffectiveTime"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasEffectiveTime"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A privacy rule specifies permission or obligation to treat information in accord with privacy wishes.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Privacy Rule</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ProviderOrganization -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ProviderOrganization">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+        <dc:description>A provider organization is an organization that furnishes healthcare.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Provider Organization</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PurposeOfUse -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PurposeOfUse">
+        <dc:description>A purpose of use is an intention for which an object is accessed.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>Subclasses of PurposeOfUse are specified in PurposeOfUseOntology.owl.</rdfs:comment>
+        <rdfs:label>Purpose of Use</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Refrain -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Refrain">
+        <dc:description>A refrain represents a responsibility to not follow a course of action.</dc:description>
+        <dc:source>HL7 v3 RefrainPolicy value set.</dc:source>
+        <rdfs:comment>Subclasses of Refrain are specified in RefrainOntology.owl.</rdfs:comment>
+        <rdfs:label>Refrain</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RefrainPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RefrainPolicy">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#BasicSecurityPolicy"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesRefrain"/>
+                        <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Refrain"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#specifiesRefrain"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Refrain"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>A refrain policy is a policy used to indicate that a specific action is prohibited based on specific access control attributes (e.g., purpose of use, information type, user role, etc.).</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:label>Refrain Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RoleSet -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RoleSet">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#includesSecurityRole"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A role set is a collection of roles (as specified by an organization).</dc:description>
+        <dc:source>De novo</dc:source>
+        <rdfs:label>Role Set</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Route -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Route">
+        <dc:description>A route is a sequence of links, and/or partial links, that describe a path, usually between two positions, within a network [ISO 19133:2005] [ISO 19134:2007, 4.11]</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>Subclasses of Route are specified in RouteOntology.owl.</rdfs:comment>
+        <rdfs:label>Route</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityPolicy -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityPolicy">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+        <dc:description>A security policy is a policy that is concerned with information security practices.</dc:description>
+        <dc:description>A set of rules laid down by the security authority governing the use and provision of security services and facilities [ISO/TS 22600-3:2009(E)]</dc:description>
+        <dc:description>A set of rules that constrains one or more sets of activities of one or more sets of objects [ISO/IEC 10746-3]</dc:description>
+        <dc:description>plan or course of action adopted for providing computer security [ISO/TS 22600-1:2006(E), ISO/TS 22600-2:2006(E), and ISO/TS 22600-3:2009(E)]</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:comment>The Composite Security and Privacy DAM has a class named &apos;Policy&apos; but refers in text to the more specific notion of &apos;Security Policy&apos;.</rdfs:comment>
+        <rdfs:label>Security Policy</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A role is set of competences and/or performances that are associated with a task.</dc:description>
+        <dc:source>ISO/TS 21298:2008(E) and ANSI/INCITS 359-2004</dc:source>
+        <rdfs:comment>&apos;Role&apos; is considered a synonym for this &apos;SecurityRole&apos; class per the 08/24/2010 meeting of the Security WG.</rdfs:comment>
+        <rdfs:comment>Roles provide a means of indirectly assigning privileges to individuals.</rdfs:comment>
+        <rdfs:comment>Subclasses of SecurityRole are specified in RoleOntology.owl.</rdfs:comment>
+        <rdfs:label>Security Role</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Sensitivity -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Sensitivity">
+        <dc:description>Sensitivity specifies the characteristic of a resource which implies its value or importance, and may include its vulnerability [ISO 7498-2:1989]. Vulnerability here is defined as medically vulnerable with respect to privacy, subject to social stigmatization.</dc:description>
+        <dc:source>ISO 7498-2:1989</dc:source>
+        <rdfs:comment>Subclasses of Sensitivity are specified in SensitivityOntology.owl.</rdfs:comment>
+        <rdfs:label>Sensitivity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SeparationOfDutyConstraint -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SeparationOfDutyConstraint">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#separatesSecurityRole"/>
+                        <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#separatesSecurityRole"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>A separation of duty constraint is a constraint that defines exclusivity relations among roles.</dc:description>
+        <dc:source>ANSI/INCITS 359-2004</dc:source>
+        <rdfs:label>Separation of Duty Constraint</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ServiceDeliveryLocation -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ServiceDeliveryLocation">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location"/>
+        <dc:description>A role of a place that further classifies the setting (e.g., accident site, road side, work site, community location) in which services are delivered.</dc:description>
+        <dc:source>HL7 v3 ServiceDeliveryLocationRoleType value set</dc:source>
+        <rdfs:comment>Subclasses of ServiceDeliveryLocation are specified in ServiceDeliveryLocationOntology.owl.</rdfs:comment>
+        <rdfs:label>Service Delivery Location</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#StructuralRole -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#StructuralRole">
+        <rdfs:subClassOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+        <dc:description>A structural role reflects the structural aspects of relationships between entities.  Structural roles describe prerequisites, feasibilities or competences for acts.</dc:description>
+        <dc:source>ISO 22600-2</dc:source>
+        <rdfs:comment>According to the HL7 CSP-DAM: A structural role is a security role that places a user in an organizational hierarchy as belonging to a category of healthcare personnel warranting certain levels of access control: Structural roles allow users to participate in the organization’s workflow (e.g., tasks) by job, title, or position, but do not specify detailed permissions on specific information objects.  Structural roles allow a user to “connect” to a resource, but do not grant authorizations.</rdfs:comment>
+        <rdfs:label>Structural Role</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SubjectOfRecord -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SubjectOfRecord">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+                            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Population"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                    <owl:Restriction>
+                        <owl:onProperty>
+                            <rdf:Description>
+                                <owl:inverseOf rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasSubject"/>
+                            </rdf:Description>
+                        </owl:onProperty>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <dc:description>A subject of [a] record is a person or population described by a health record (record object).</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>Subject of Record</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignment -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignment">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#assignsSecurityRole"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#assignsUserIdentity"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#assignsUserIdentity"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A user assignment is an association of a user with role(s) he or she is allowed to assume.</dc:description>
+        <dc:source>ANSI/INCITS 359-2004</dc:source>
+        <rdfs:comment>It is expected that specific organizations will create and maintain their own instances of UserAssignment.</rdfs:comment>
+        <rdfs:label>User Assignment</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignmentSet -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignmentSet">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#includesUserAssignment"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignment"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A user assignment set is a collection of assignments of users to roles (as specified by an organization).</dc:description>
+        <dc:source>De novo</dc:source>
+        <rdfs:label>User Assignment Set</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity -->
+
+    <owl:Class rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#allowedLoginLocation"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasCurrentLocation"/>
+                <owl:allValuesFrom rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#allowedLoginTimeOfDay"/>
+                <owl:allValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                            </rdf:Description>
+                            <rdf:Description>
+                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">86400</xsd:maxInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authenticationLevelOfAssurance"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#identityProofingLevelOfAssurance"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#usingWorkstationId"/>
+                <owl:allValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasIdentifier"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#hasName"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#authenticationLevelOfAssurance"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#identityProofingLevelOfAssurance"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <dc:description>A user identity is the representation of a human being in an information system.</dc:description>
+        <dc:source>HL7 Composite Security and Privacy DAM</dc:source>
+        <rdfs:label>User Identity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#AuthorizationPolicy"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintPolicy"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#DelegationPolicy"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ObligationPolicy"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RefrainPolicy"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ClinicalObservation"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Compartment"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Confidentiality"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Constraint"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#ConstraintCatalog"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InformationReference"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Integrity"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#InterorganizationalAgreement"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Jurisdiction"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Location"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Object"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Obligation"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Operation"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Organization"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PaymentSource"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Person"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Policy"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Population"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyConsentDirective"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PrivacyRule"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#PurposeOfUse"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Refrain"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#RoleSet"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Route"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#SecurityRole"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#Sensitivity"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignment"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserAssignmentSet"/>
+            <rdf:Description rdf:about="http://hl7.org/ontology/SecurityAndPrivacyOntology.owl#UserIdentity"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+

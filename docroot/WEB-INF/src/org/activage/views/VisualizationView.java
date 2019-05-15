@@ -1,5 +1,10 @@
 package org.activage.views;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,6 +14,9 @@ import java.util.Map.Entry;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.portlet.PortletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 import org.activage.entities.DataProperty;
 import org.activage.entities.Instance;
@@ -19,7 +27,11 @@ import org.activage.utils.Utils;
 import org.activage.views.helper_entities.AnnotationItem;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.NodeSelectEvent;
+import org.primefaces.model.StreamedContent;
 import org.primefaces.model.TreeNode;
+
+import com.hp.hpl.jena.rdf.model.Model;
+import com.liferay.portal.util.PortalUtil;
 
 @ManagedBean(name = "visualizationView")
 @ViewScoped
@@ -45,7 +57,9 @@ public class VisualizationView extends RootView{
 	private DataProperty selectedDataProperty;
 	private ObjProperty selectedObjectProperty;
 	private Instance selectedInstance;
+	private String turtleDescription;
 	private List<InstanceProperty> instanceProperties = new ArrayList<InstanceProperty>();
+	
 
 
 	@PostConstruct
@@ -97,6 +111,55 @@ public class VisualizationView extends RootView{
 		selectedNodeInstances = selectedOntologyClass.listInstances();
 		Collections.sort(selectedNodeInstances);
 
+	}
+	
+	public void openDescription(){
+		turtleDescription = "";
+		try {
+			turtleDescription = ontologyHandler.getOntologyDescription(selectedNodeUri);
+			turtleDescription = turtleDescription.replaceAll("\n", "<br>");
+			//System.out.println(turtleDescription);
+			RequestContext.getCurrentInstance().execute(
+					"textualDescriptionDialog.show();");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * method used to download the excel file with the usages
+	 * @return
+	 */
+	public StreamedContent download(){   
+		try {
+			Model model = ontologyHandler.getOntologyDescriptionModel(selectedNodeUri);
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			model.write(output, "TTL");
+			
+			InputStream stream = new ByteArrayInputStream(output.toByteArray());
+			// 2. get Liferay's ServletResponse
+			 PortletResponse portletResponse = (PortletResponse) FacesContext
+			   .getCurrentInstance().getExternalContext().getResponse();
+			 HttpServletResponse res = PortalUtil
+			   .getHttpServletResponse(portletResponse);
+			 res.setHeader("Content-Disposition", "attachment; filename=\"" + selectedNodeName +".txt" + "\"");//
+			 res.setHeader("Content-Transfer-Encoding", "binary");
+			 res.setContentType("application/octet-stream");
+			 res.flushBuffer();
+
+			 // 3. write the file into the outputStream
+			 OutputStream out = res.getOutputStream();
+			 byte[] buffer = new byte[4096];
+			 int bytesRead;
+			 while ((bytesRead = stream.read(buffer)) != -1) {
+			  out.write(buffer, 0, bytesRead);
+			  buffer = new byte[4096];
+			 }
+		}
+		catch (Exception w){
+			w.printStackTrace();
+		}
+		return null;
 	}
 	
 	/**
@@ -285,5 +348,13 @@ public class VisualizationView extends RootView{
 
 	public void setInstanceProperties(List<InstanceProperty> instanceProperties) {
 		this.instanceProperties = instanceProperties;
+	}
+
+	public String getTurtleDescription() {
+		return turtleDescription;
+	}
+
+	public void setTurtleDescription(String turtleDescription) {
+		this.turtleDescription = turtleDescription;
 	}
 }

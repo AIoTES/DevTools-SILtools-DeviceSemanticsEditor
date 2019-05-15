@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#"
-     xml:base="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core"
+<rdf:RDF xmlns="https://activageproject.org/datamodel/bestpractices/ahaontology#"
+     xml:base="https://activageproject.org/datamodel/bestpractices/ahaontology"
      xmlns:schema="http://schema.org/"
      xmlns:qu="http://purl.org/NET/ssnx/qu/qu#"
      xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
@@ -17,9 +17,9 @@
      xmlns:vann="http://purl.org/vocab/vann/"
      xmlns:foaf="http://xmlns.com/foaf/0.1/"
      xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core">
-        <owl:imports rdf:resource="http://srvgal106.deri.ie:8013/ontology/GOIoTPex.owl"/>
-        <owl:imports rdf:resource="http://srvgal106.deri.ie:8013/ontology/GOIoTP.owl"/>
+    <owl:Ontology rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology">
+        <owl:imports rdf:resource="http://ontologies.activageproject.eu/GOIoTPex.owl"/>
+        <owl:imports rdf:resource="http://ontologies.activageproject.eu/GOIoTP.owl"/>      
         <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ACTIVAGE Ontology: shell classes</rdfs:comment>
         <terms:rights rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This ontology is distributed under a Creative Commons Attribution License - http://creativecommons.org/licenses/by/3.0</terms:rights>
         <dc:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ACTIVAGE Ontology</dc:title>
@@ -56,38 +56,46 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#AAL -->
+    <!-- http://www.w3.org/ns/sosa/Observation -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#AAL">
+    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/Observation">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/ssn/Output"/>
+    </rdf:Description>
+    
+
+
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#AAL -->
+
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#AAL">
         <rdfs:subClassOf rdf:resource="http://inter-iot.eu/GOIoTP#DomainOfInterest"/>
         <rdfs:label xml:lang="en">Ambient Assisted Living</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#AirTemperatureSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#AirTemperatureSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#AirTemperatureSensor">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#TemperatureSensor"/>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#AirTemperatureSensor">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#TemperatureSensor"/>
         <rdfs:comment xml:lang="en">Air temperature sensor is a the bulk temperature of the air, not the surface (skin) temperature..</rdfs:comment>
         <rdfs:label xml:lang="en">Air Temperature Sensor</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#BoardTemperatureSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#BoardTemperatureSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#BoardTemperatureSensor">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#TemperatureSensor"/>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#BoardTemperatureSensor">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#TemperatureSensor"/>
         <rdfs:comment xml:lang="en">Board Temperature Sensor ia a sensor that can be used to measure temperature in the board.</rdfs:comment>
         <rdfs:label xml:lang="en">Board Temperature Sensor</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#City -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#City -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#City">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#City">
         <rdfs:subClassOf rdf:resource="http://inter-iot.eu/GOIoTP#DomainOfInterest"/>
         <rdfs:comment xml:lang="en">Smart City as an Internet of Things (IoT) applicative domain.</rdfs:comment>
         <rdfs:label xml:lang="en">Smart City DOI</rdfs:label>
@@ -95,9 +103,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Decibel -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#Decibel -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Decibel">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#Decibel">
         <rdfs:subClassOf rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciUnits.owl#Unit"/>
         <rdfs:comment xml:lang="en">Decibel is a logarithmic unit used to express the ratio of two values of a physical quantity. It is often used to measure sound level.</rdfs:comment>
         <rdfs:label xml:lang="en">Decibel (dB)</rdfs:label>
@@ -106,32 +114,20 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#DeltaDewpoint -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#DeltaDewpoint -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#DeltaDewpoint">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#DewCell"/>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#DeltaDewpoint">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#DewCell"/>
         <rdfs:comment xml:lang="en">Device that measures the difference between Dewpoint and surface temperatures.</rdfs:comment>
         <rdfs:label xml:lang="en">Delta Dew Point</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#DewCell -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#DewCell -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#DewCell">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#HumiditySensor"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://inter-iot.eu/GOIoTP#hasUnit"/>
-                <owl:someValuesFrom rdf:resource="http://sweet.jpl.nasa.gov/2.3/reprSciUnits.owl#BaseUnit"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/observes"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#DewPoint"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#DewCell">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#HumiditySensor"/>
         <rdfs:comment>A Dew Cell is an instrument used for determining the dew point. A dew cell heats a salt solution until its equilibrium vapour pressure equals to the ambient vapour pressure, and maintains this equilibrium The temperature when this occurs is measured and it provides a measure of the ambient vapour pressure</rdfs:comment>
         <rdfs:label>Dew Cell</rdfs:label>
         <rdfs:seeAlso>http://www.hydrometeoindustry.org/Meetings2010/ET-AWS-6/Doc8[1]-AWS-MetadataCatalogues.pdf</rdfs:seeAlso>
@@ -139,19 +135,19 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#DewPoint -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#DewPoint -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#DewPoint">
-        <rdfs:subClassOf rdf:resource="http://inter-iot.eu/GOIoTPex#Temperature"/>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#DewPoint">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#DewCell"/>
         <rdfs:comment>The dew point is the temperature to which air must be cooled to become saturated with water vapor.</rdfs:comment>
         <rdfs:seeAlso>https://en.wikipedia.org/wiki/Dew_point</rdfs:seeAlso>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#ElectricitySensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#ElectricitySensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#ElectricitySensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#ElectricitySensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:comment xml:lang="en">The Electricity sensor detects and measures the active power current along an electrical wire using the magnetic field with the watt.</rdfs:comment>
         <rdfs:label xml:lang="en">Electricity Sensor</rdfs:label>
@@ -159,9 +155,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Health -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#Health -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Health">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#Health">
         <rdfs:subClassOf rdf:resource="http://inter-iot.eu/GOIoTP#DomainOfInterest"/>
         <rdfs:comment xml:lang="en">Health care as an Internet of Things (IoT) applicative domain.</rdfs:comment>
         <rdfs:label xml:lang="en">Health Care DOI</rdfs:label>
@@ -169,18 +165,18 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#HumiditySensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#HumiditySensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#HumiditySensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#HumiditySensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:label>Humidity Sensor</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#IlluminanceSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#IlluminanceSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#IlluminanceSensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#IlluminanceSensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -192,9 +188,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OfficeCO2Sensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#OfficeCO2Sensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OfficeCO2Sensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#OfficeCO2Sensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:comment xml:lang="en">Carbon Dioxide (CO2) Sensor used to measure level of CO2 in the atmosphere of the office.</rdfs:comment>
         <rdfs:label xml:lang="en">Office CO2 Sensor</rdfs:label>
@@ -202,38 +198,38 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OfficeHumiditySensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#OfficeHumiditySensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OfficeHumiditySensor">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#HumiditySensor"/>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#OfficeHumiditySensor">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#HumiditySensor"/>
         <rdfs:comment xml:lang="en">Humidity sensor or hygrometer is an instrument used for measuring the moisture concent in the environment.</rdfs:comment>
         <rdfs:label xml:lang="en">Office Humidity Sensor</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OfficeIlluminationSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#OfficeIlluminationSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OfficeIlluminationSensor">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#IlluminanceSensor"/>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#OfficeIlluminationSensor">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#IlluminanceSensor"/>
         <rdfs:label xml:lang="en">Office Illumination Sensor</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OfficeTemperatureSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#OfficeTemperatureSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OfficeTemperatureSensor">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#TemperatureSensor"/>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#OfficeTemperatureSensor">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#TemperatureSensor"/>
         <rdfs:comment xml:lang="en">The temperature of the air in the office that would be indicated by a thermometer exposed to the air at a location sheltered from direct solar radiation.</rdfs:comment>
         <rdfs:label xml:lang="en">Office Temperature Sensor</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OutputVoltageSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#OutputVoltageSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#OutputVoltageSensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#OutputVoltageSensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:comment xml:lang="en">Device which can measure the difference in electric potential energy between two points per unit electric charge.</rdfs:comment>
         <rdfs:label xml:lang="en">Output Voltage Sensor</rdfs:label>
@@ -241,9 +237,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#ParkingSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#ParkingSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#ParkingSensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#ParkingSensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:comment xml:lang="en">Parking sensor is proximity sensor for road vehicles designed to alert the driver of obstacles while parking</rdfs:comment>
         <rdfs:label xml:lang="en">Parking Sensor</rdfs:label>
@@ -251,17 +247,17 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Presence -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#Presence -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Presence">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#Presence">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/ObservableProperty"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#PresenceObs -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#PresenceObs -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#PresenceObs">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#PresenceObs">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -274,9 +270,9 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#RadiationSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#RadiationSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#RadiationSensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#RadiationSensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:comment xml:lang="en">A radiation sensor was a type of sensor that measured radiation</rdfs:comment>
         <rdfs:label xml:lang="en">Radiation Sensor</rdfs:label>
@@ -284,10 +280,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#RelativeHumiditySensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#RelativeHumiditySensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#RelativeHumiditySensor">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#HumiditySensor"/>
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#RelativeHumiditySensor">
+        <rdfs:subClassOf rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#HumiditySensor"/>
         <rdfs:comment xml:lang="en">Certain materials interact with water vapour and undergo a change in 
 electrical resistance, in relation to ambient humidity.</rdfs:comment>
         <rdfs:label xml:lang="en">Relative Humidity Sensor</rdfs:label>
@@ -295,9 +291,9 @@ electrical resistance, in relation to ambient humidity.</rdfs:comment>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#SoundLevelSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#SoundLevelSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#SoundLevelSensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#SoundLevelSensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:comment xml:lang="en">A sound level sensor is used to detect Noise level.</rdfs:comment>
         <rdfs:label xml:lang="en">Sound Level Sensor</rdfs:label>
@@ -305,18 +301,18 @@ electrical resistance, in relation to ambient humidity.</rdfs:comment>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#TemperatureSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#TemperatureSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#TemperatureSensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#TemperatureSensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:label xml:lang="en">Temperature Sensor</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Transportation -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#Transportation -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Transportation">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#Transportation">
         <rdfs:subClassOf rdf:resource="http://inter-iot.eu/GOIoTP#DomainOfInterest"/>
         <rdfs:comment xml:lang="en">Transportation, Smart Car/Vehicle, Intelligent Transport System (ITS) as an Internet of Things (IoT) applicative domain.</rdfs:comment>
         <rdfs:label xml:lang="en">Transportation DOI</rdfs:label>
@@ -324,14 +320,14 @@ electrical resistance, in relation to ambient humidity.</rdfs:comment>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#UserOccupancySensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#UserOccupancySensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#UserOccupancySensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#UserOccupancySensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/madeObservation"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#PresenceObs"/>
+                <owl:someValuesFrom rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#PresenceObs"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The User Occupancy Sensor is an indoor motion detecting devices used to detect the presence of a person to automatically control lights or temperature or ventilation systems</rdfs:comment>
@@ -340,27 +336,19 @@ electrical resistance, in relation to ambient humidity.</rdfs:comment>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#UserPresenceSensor -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#UserPresenceSensor -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#UserPresenceSensor">
+    <owl:Class rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#UserPresenceSensor">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/sosa/Sensor"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.w3.org/ns/sosa/madeObservation"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#PresenceObs"/>
+                <owl:someValuesFrom rdf:resource="https://activageproject.org/datamodel/bestpractices/ahaontology#PresenceObs"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Device used to detect if an object (vehicle, room, place, etc.) is occupied by User</rdfs:comment>
         <rdfs:label xml:lang="en">User Presence Sensor</rdfs:label>
     </owl:Class>
-    
-
-
-    <!-- http://www.w3.org/ns/sosa/Observation -->
-
-    <rdf:Description rdf:about="http://www.w3.org/ns/sosa/Observation">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/ssn/Output"/>
-    </rdf:Description>
     
 
 
@@ -375,9 +363,9 @@ electrical resistance, in relation to ambient humidity.</rdfs:comment>
     
 
 
-    <!-- http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Index -->
+    <!-- https://activageproject.org/datamodel/bestpractices/ahaontology#Index -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/activage/ontologies/2018/4/activage-core#Index"/>
+    <owl:NamedIndividual rdf:about="https://activageproject.org/datamodel/bestpractices/ahaontology#Index"/>
 </rdf:RDF>
 
 

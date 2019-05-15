@@ -11,6 +11,7 @@ import org.activage.entities.OntologyClass;
 import org.activage.views.helper_entities.AnnotationItem;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.NodeSelectEvent;
+import org.primefaces.model.StreamedContent;
  
 
  
@@ -44,6 +45,15 @@ public class DataPropertiesView extends RootView{
 		selectedNodeRanges = ontologyHandler.findPropertyRanges(selectedNodeUri);
 		selectedDataPropertyAnnotationItems = ontologyHandler.getOrderedAnnotationPairs(selectedProperty.getDatatypeProperty());
     }
+	
+	public void openDescription(){
+		System.out.println("---> "+selectedNodeUri);
+		super.openDescription(selectedNodeUri);
+	}
+	
+	public StreamedContent download(){
+		return super.download(selectedNodeUri, selectedNodeName);
+	}
 	
 	public void selectClass(String classURI){
 		selectedClass = ontologyHandler.getOntologyClassByURI(classURI);
