@@ -573,10 +573,15 @@ public class OntologyHandler {
 			}
 			for (ExtendedIterator<? extends OntProperty> j = annotationProperty
 					.listSuperProperties(true); j.hasNext();) {
-				AnnotationProperty parent = (AnnotationProperty) j.next();
-				String parentName = parent.getLocalName();
-				if (parentName != null) {
-					allAnnProperties.add(new AnnProperty(parent));
+				try {
+					AnnotationProperty parent = (AnnotationProperty) j.next();
+					String parentName = parent.getLocalName();
+					if (parentName != null) {
+						allAnnProperties.add(new AnnProperty(parent));
+					}
+				}
+				catch (Exception e){
+					
 				}
 			}
 		}
@@ -599,10 +604,13 @@ public class OntologyHandler {
 			AnnProperty annotationProperty, TreeNode parent,
 			ExtendedIterator<? extends OntProperty> i) {
 		while (i.hasNext()) {
-			AnnProperty child = new AnnProperty((AnnotationProperty) i.next());
-			TreeNode node = new DefaultTreeNode(child, parent);
-			findChildrenAnnotationProperties(child, node, child
-					.getAnnotationProperty().listSubProperties(true));
+			try {
+				AnnProperty child = new AnnProperty((AnnotationProperty) i.next());
+				TreeNode node = new DefaultTreeNode(child, parent);
+				findChildrenAnnotationProperties(child, node, child
+						.getAnnotationProperty().listSubProperties(true));
+			}
+			catch (Exception e){};
 		}
 	}
 
