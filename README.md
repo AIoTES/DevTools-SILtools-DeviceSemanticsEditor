@@ -53,4 +53,4 @@ By default, the application will be available from a web browser at the followin
 
 ## License
 
-Software is based on software components licensed under Apache 2.0 (Primefaces, Jena) and GNU LGPL v2.1 (Liferay Portal CE)
+EUPL v1.2
