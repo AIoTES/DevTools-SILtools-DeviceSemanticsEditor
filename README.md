@@ -53,4 +53,4 @@ By default, the application will be available from a web browser at the followin
 
 ## License
 
-EUPL v1.2
+Copyright 2020 CERTH/ITI Visual Analytics Lab. This software is licenced under EUPL v1.2, check [LICENSE](./LICENSE) for more.
